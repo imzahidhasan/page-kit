@@ -1,103 +1,171 @@
-import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+export default function Page() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="relative min-h-dvh grid place-items-center overflow-hidden px-4 py-14 text-slate-100 bg-[#0b0c10] bg-gradient-to-br from-indigo-950/30 via-cyan-900/20 to-slate-950">
+      <div className="w-full max-w-6xl mx-auto text-center">
+        <div className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-[11px] font-medium uppercase tracking-[0.14em] text-slate-300/90 border border-white/10 bg-white/5 backdrop-blur-md ring-1 ring-white/5 shadow-[0_0_0_1px_rgba(255,255,255,.06)_inset]">
+          Introducing
+        </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        <h1 className="mt-4 mb-3 text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-none tracking-tight">
+          Page&nbsp;
+          <span className="bg-gradient-to-r from-purple-500 to-emerald-400 bg-clip-text text-transparent">
+            Kit
+          </span>
+        </h1>
+
+        <p className="mt-1 mx-auto max-w-3xl text-slate-400 text-base sm:text-lg lg:text-xl">
+          A composable, accessible, and themeable UI component library for
+          modern React apps.
+        </p>
+
+        <div className="mt-8 mb-12 flex gap-3 justify-center flex-wrap">
+          <Link
+            href="/docs/getting-started"
+            className="inline-flex items-center justify-center px-4 py-3 rounded-xl bg-gradient-to-b from-purple-500 to-purple-600 border border-white/10 text-white font-semibold transition-all duration-150 hover:-translate-y-0.5 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-300/50"
+            aria-label="Get started with Page Kit"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
+            Get Started
+          </Link>
           <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href="https://github.com/your-org/page-kit"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center px-4 py-3 rounded-xl bg-slate-800 border border-slate-600 text-white font-semibold transition-all duration-150 hover:-translate-y-0.5 hover:bg-slate-700 hover:border-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-300/40"
+            aria-label="Open Page Kit on GitHub"
           >
-            Read our docs
+            GitHub
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 max-w-5xl mx-auto mb-6">
+          <section className="text-left bg-white/[0.03] border border-white/10 rounded-2xl p-5 backdrop-blur-sm ring-1 ring-white/5 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)] transition-colors">
+            <div className="text-xs text-slate-400 uppercase tracking-[0.18em] mb-2">
+              Install
+            </div>
+            <pre
+              className="m-0 p-4 bg-slate-950/95 border border-slate-700 rounded-xl overflow-auto leading-6 text-[13.5px] text-slate-200 font-mono"
+              aria-label="Installation command"
+            >
+              <code>npm install page-kit</code>
+            </pre>
+          </section>
+
+          <section className="text-left bg-white/[0.03] border border-white/10 rounded-2xl p-5 backdrop-blur-sm ring-1 ring-white/5 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.6)] transition-colors">
+            <div className="text-xs text-slate-400 uppercase tracking-[0.18em] mb-2">
+              Usage
+            </div>
+            <pre
+              className="m-0 p-4 bg-slate-950/95 border border-slate-700 rounded-xl overflow-auto leading-6 text-[13.5px] text-slate-200 font-mono"
+              aria-label="Usage example"
+            >
+              <code>{`import { Button, Card, Text } from "page-kit";
+
+export default function Demo() {
+  return (
+    <Card>
+      <Text as="h3">Welcome to Page Kit</Text>
+      <Text as="p" tone="muted">
+        Build consistent, accessible UIs faster.
+      </Text>
+      <Button variant="primary" onClick={() => alert("Hello Page Kit!")}>
+        Try it
+      </Button>
+    </Card>
+  );
+}`}</code>
+            </pre>
+          </section>
+        </div>
+
+        <ul
+          className="mt-8 mx-auto p-0 list-none grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 max-w-4xl text-slate-300 text-[15px]"
+          aria-label="Key features"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <li className="flex items-start gap-3 rounded-lg p-2 hover:bg-white/5 transition-colors">
+            <svg
+              className="mt-1 size-4 text-emerald-400"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 10l3 3 9-9"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span>Accessible by default (WAI-ARIA best practices)</span>
+          </li>
+          <li className="flex items-start gap-3 rounded-lg p-2 hover:bg-white/5 transition-colors">
+            <svg
+              className="mt-1 size-4 text-emerald-400"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 10l3 3 9-9"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span>Composable primitives and polished components</span>
+          </li>
+          <li className="flex items-start gap-3 rounded-lg p-2 hover:bg-white/5 transition-colors">
+            <svg
+              className="mt-1 size-4 text-emerald-400"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 10l3 3 9-9"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span>Framework-friendly and themeable</span>
+          </li>
+          <li className="flex items-start gap-3 rounded-lg p-2 hover:bg-white/5 transition-colors">
+            <svg
+              className="mt-1 size-4 text-emerald-400"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 10l3 3 9-9"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span>Tree-shakeable and TypeScript-first</span>
+          </li>
+        </ul>
+      </div>
+
+      {/* Background glows */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10"
+        aria-hidden="true"
+      >
+        <div className="absolute left-1/2 -top-[12%] h-[700px] w-[900px] -translate-x-1/2 rounded-full blur-3xl bg-radial [--tw-gradient-position:50%_50%] from-purple-500/25 via-transparent to-transparent opacity-70 animate-pulse-slow" />
+        <div className="absolute left-[8%] top-[8%] h-[520px] w-[620px] rounded-full blur-3xl bg-radial [--tw-gradient-position:70%_30%] from-emerald-400/20 via-transparent to-transparent opacity-60 animate-float" />
+      </div>
+    </main>
   );
 }
