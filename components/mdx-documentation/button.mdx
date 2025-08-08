@@ -1,4 +1,4 @@
-import Button from '@/components/ui/button'
+import { Button } from '@/components/ui'
 
 # Button Component
 
@@ -7,17 +7,79 @@ The `Button` component is a versatile and customizable UI element that provides 
 ## Import
 
 ```tsx
-import  Button  from '@/components/ui/button'
+import { Button } from '@/components/ui'
 ```
 
 ## Basic Usage
 
-<div className="my-6 p-4 border rounded-lg">
-  <button>Click me</button>
+<div className="my-6 p-4 border rounded-lg bg-white dark:bg-gray-800">
+  <Button>Click me</Button>
 </div>
 
 ```jsx
 <Button>Click me</Button>
+```
+
+## Variants
+
+### Default Button
+
+<div className="my-6 p-4 border rounded-lg bg-white dark:bg-gray-800">
+  <Button>Default Button</Button>
+</div>
+
+```jsx
+<Button>Default Button</Button>
+```
+
+### Destructive Button
+
+<div className="my-6 p-4 border rounded-lg bg-white dark:bg-gray-800">
+  <Button variant="destructive">Delete Item</Button>
+</div>
+
+```jsx
+<Button variant="destructive">Delete Item</Button>
+```
+
+### Outline Button
+
+<div className="my-6 p-4 border rounded-lg bg-white dark:bg-gray-800">
+  <Button variant="outline">Outline Button</Button>
+</div>
+
+```jsx
+<Button variant="outline">Outline Button</Button>
+```
+
+### Secondary Button
+
+<div className="my-6 p-4 border rounded-lg bg-white dark:bg-gray-800">
+  <Button variant="secondary">Secondary Button</Button>
+</div>
+
+```jsx
+<Button variant="secondary">Secondary Button</Button>
+```
+
+### Ghost Button
+
+<div className="my-6 p-4 border rounded-lg bg-white dark:bg-gray-800">
+  <Button variant="ghost">Ghost Button</Button>
+</div>
+
+```jsx
+<Button variant="ghost">Ghost Button</Button>
+```
+
+### Link Button
+
+<div className="my-6 p-4 border rounded-lg bg-white dark:bg-gray-800">
+  <Button variant="link">Link Button</Button>
+</div>
+
+```jsx
+<Button variant="link">Link Button</Button>
 ```
 
 ## Variants
@@ -171,20 +233,6 @@ The Button component supports multiple visual styles:
 <Button>
   Download
   <span className="ml-2">⬇️</span>
-</Button>
-```
-
-## Event Handling
-
-<div className="my-4 p-4 border rounded-lg">
-  <Button onClick={() => alert('Button clicked!')}>
-    Click for Alert
-  </Button>
-</div>
-
-```jsx
-<Button onClick={() => alert('Button clicked!')}>
-  Click for Alert
 </Button>
 ```
 

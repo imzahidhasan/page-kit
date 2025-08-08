@@ -5,6 +5,7 @@ import {
   Footer,
   MobileNav,
   Breadcrumb,
+  MDXContentWrapper,
 } from "@/components/site-component";
 
 export default function DocsLayout({
@@ -26,7 +27,9 @@ export default function DocsLayout({
           <main className="flex-1 min-w-0">
             <div className="py-8 px-6">
               <Breadcrumb className="mb-8" />
-              <article className="max-w-none">{children}</article>
+              <article className="max-w-none">
+                <MDXContentWrapper>{children}</MDXContentWrapper>
+              </article>
             </div>
           </main>
 

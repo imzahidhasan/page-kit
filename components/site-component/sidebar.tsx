@@ -24,10 +24,10 @@ const navigationItems: NavItem[] = [
     title: "Components",
     children: [
       { title: "Overview", href: "/docs/components" },
-      { title: "Button", href: "/docs/components/button" },
-      { title: "Input", href: "/docs/components/input" },
-      { title: "Card", href: "/docs/components/card" },
-      { title: "Modal", href: "/docs/components/modal" },
+      { title: "Button", href: "/docs/button" },
+      { title: "Input", href: "/docs/input" },
+      { title: "Card", href: "/docs/card" },
+      { title: "Modal", href: "/docs/modal" },
     ],
   },
   {
