@@ -1,4 +1,4 @@
-import type { DocItem } from "./component-registry";
+import type { DocItem } from "../component-registry/component-registry";
 
 // Core helper implementations that operate on a provided docs array.
 export function getAllDocs(docs: DocItem[]): DocItem[] {

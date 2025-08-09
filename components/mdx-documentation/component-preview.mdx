@@ -1,0 +1,79 @@
+import { ComponentPreview } from "@/components/site-component/component-showcase";
+import { Button } from "@/components/ui/button";
+
+# Simple Component Preview
+
+Here's how to use the simplified ComponentPreview component with clean tab switchers:
+
+<ComponentPreview
+  title="Button Variants"
+  description="Different button styles available in our design system"
+  code={`import { Button } from "@/components/ui/button";
+
+export default function ButtonExample() {
+  return (
+    <div className="space-y-4">
+      <Button variant="default">Default Button</Button>
+      <Button variant="outline">Outline Button</Button>
+      <Button variant="ghost">Ghost Button</Button>
+    </div>
+  );
+}`}
+>
+  <div className="space-y-4">
+    <Button variant="default">Default Button</Button>
+    <Button variant="outline">Outline Button</Button>
+    <Button variant="ghost">Ghost Button</Button>
+  </div>
+</ComponentPreview>
+
+## Simple Component Example
+
+<ComponentPreview
+  showWebpageFrame={false}
+  code={`import { Button } from "@/components/ui/button";
+
+export default function SimpleButton() {
+  return <Button>Click me!</Button>;
+}`}
+>
+  <Button>Click me!</Button>
+</ComponentPreview>
+
+## Features
+
+- **🌐 Webpage-like Preview**: Browser frame with realistic localhost URL
+- **🎨 Syntax Highlighting**: Beautiful code highlighting with Prism.js
+- **📋 Enhanced Copy Button**: Visual feedback when copying code
+- **📱 Responsive Design**: Works on all screen sizes
+- **🌙 Dark Mode Support**: Adapts to your theme
+- **📝 Title & Description**: Optional metadata for better documentation
+- **🎯 Flexible Layout**: Toggle webpage frame on/off
+
+## Usage
+
+```tsx
+import { ComponentPreview } from "@/components/site-component/component-showcase";
+import { YourComponent } from "@/components/ui/your-component";
+
+<ComponentPreview
+  title="Component Title" // Optional
+  description="Component description" // Optional
+  code={`// Your component code here`}
+  language="tsx" // Optional: defaults to "tsx"
+  showWebpageFrame={true} // Optional: defaults to true
+  previewClassName="custom-preview-styles" // Optional
+  codeClassName="custom-code-styles" // Optional
+>
+  <YourComponent />
+</ComponentPreview>;
+```
+
+## Props
+
+- `title` (optional): Display title above the component
+- `description` (optional): Description text
+- `showWebpageFrame` (optional): Enable/disable browser-like frame (default: true)
+- `language` (optional): Programming language for syntax highlighting (default: "tsx")
+- `previewClassName` (optional): Custom CSS classes for preview area
+- `codeClassName` (optional): Custom CSS classes for code area

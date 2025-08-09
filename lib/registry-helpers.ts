@@ -1,6 +1,6 @@
 // Wrapper helper functions around the docs registry. Kept separate so that
 // component-registry.ts focuses purely on data definitions.
-import docs, { type DocItem } from "./component-registry"; // circular import safe: docs array already evaluated
+import docs, { type DocItem } from "../component-registry/component-registry"; // circular import safe: docs array already evaluated
 import {
   getSidebarSections as baseGetSidebarSections,
   getSearchIndex as baseGetSearchIndex,
