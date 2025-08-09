@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { X, Search, History } from "lucide-react";
+import { X, Search } from "lucide-react";
 import { getSearchIndex } from "@/lib/registry-helpers";
 import { cn } from "@/lib/utils";
 
@@ -18,30 +18,8 @@ interface IndexedItem {
   title: string;
   description?: string;
   category: string;
-  keywords?: string[];
   path: string;
   _score?: number;
-}
-
-const RECENTS_KEY = "pk_recent_searches";
-
-function loadRecents(): string[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const raw = localStorage.getItem(RECENTS_KEY);
-    if (!raw) return [];
-    return JSON.parse(raw) as string[];
-  } catch {
-    return [];
-  }
-}
-
-function saveRecents(recents: string[]) {
-  try {
-    localStorage.setItem(RECENTS_KEY, JSON.stringify(recents.slice(0, 8)));
-  } catch {
-    /* ignore */
-  }
 }
 
 /** Simple subsequence fuzzy score: higher = better */
@@ -74,22 +52,6 @@ function fuzzyScore(haystack: string, needle: string): number {
   return score - haystack.length * 0.05;
 }
 
-function highlight(text: string, query: string) {
-  if (!query) return text;
-  const q = query.trim();
-  const idx = text.toLowerCase().indexOf(q.toLowerCase());
-  if (idx === -1) return text;
-  return (
-    <>
-      {text.slice(0, idx)}
-      <span className="bg-yellow-200 dark:bg-yellow-700/50 rounded px-0.5">
-        {text.slice(idx, idx + q.length)}
-      </span>
-      {text.slice(idx + q.length)}
-    </>
-  );
-}
-
 export default function SearchModal({
   isOpen,
   onClose,
@@ -99,14 +61,6 @@ export default function SearchModal({
   const [query, setQuery] = useState("");
   const [active, setActive] = useState(0);
   const items: IndexedItem[] = useMemo(() => getSearchIndex(), []);
-  const [recents, setRecents] = useState<string[]>([]);
-
-  // load recents once opened
-  useEffect(() => {
-    if (isOpen) {
-      setRecents(loadRecents());
-    }
-  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) {
@@ -122,12 +76,7 @@ export default function SearchModal({
     if (!q) return items;
     return items
       .map((i) => {
-        const hay = [
-          i.title,
-          i.slug,
-          i.description ?? "",
-          ...(i.keywords ?? []),
-        ].join(" ");
+        const hay = [i.title, i.slug, i.description ?? ""].join(" ");
         const sc = fuzzyScore(hay, q);
         return { ...i, _score: sc } as IndexedItem;
       })
@@ -135,9 +84,15 @@ export default function SearchModal({
       .sort((a, b) => (b._score ?? 0) - (a._score ?? 0));
   }, [items, query]);
 
+  // Reset active index when filtered results change
+  useEffect(() => {
+    setActive(0);
+  }, [filtered.length]);
+
   const grouped = useMemo(() => {
     const groups: Record<string, IndexedItem[]> = {};
-    (query ? filtered : items).forEach((i) => {
+    const displayItems = query ? filtered : items;
+    displayItems.forEach((i) => {
       if (!groups[i.category]) groups[i.category] = [];
       groups[i.category].push(i);
     });
@@ -146,13 +101,52 @@ export default function SearchModal({
       .map((cat) => ({ category: cat, items: groups[cat] }));
   }, [filtered, items, query]);
 
+  // Create a flat array that matches the actual rendering order for keyboard navigation
+  const flatItems = useMemo(() => {
+    const items: IndexedItem[] = [];
+    grouped.forEach((group) => {
+      group.items.forEach((item) => {
+        items.push(item);
+      });
+    });
+    return items;
+  }, [grouped]);
+
+  // Reset active index when flat items change
+  useEffect(() => {
+    setActive(0);
+  }, [flatItems.length]);
+
+  // Scroll active item into view
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const activeElement = document.querySelector(
+      `[data-search-index="${active}"]`
+    );
+    if (activeElement) {
+      activeElement.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "nearest",
+      });
+    }
+  }, [active, isOpen]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (!isOpen) return;
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        e.preventDefault();
+        onClose();
+        return;
+      }
+
+      const maxIndex = Math.max(0, flatItems.length - 1);
+
       if (e.key === "ArrowDown") {
         e.preventDefault();
-        setActive((a) => Math.min(a + 1, filtered.length - 1));
+        setActive((a) => Math.min(a + 1, maxIndex));
       }
       if (e.key === "ArrowUp") {
         e.preventDefault();
@@ -164,26 +158,21 @@ export default function SearchModal({
       }
       if (e.key === "End") {
         e.preventDefault();
-        setActive(filtered.length - 1);
+        setActive(maxIndex);
       }
       if (e.key === "Enter") {
-        const chosen = filtered[active];
-        if (chosen) {
-          if (query.trim()) {
-            const q = query.trim();
-            setRecents((prev) => {
-              const next = [q, ...prev.filter((r) => r !== q)].slice(0, 8);
-              saveRecents(next);
-              return next;
-            });
+        e.preventDefault();
+        if (flatItems.length > 0 && active < flatItems.length) {
+          const chosen = flatItems[active];
+          if (chosen) {
+            window.location.href = chosen.path;
           }
-          window.location.href = chosen.path;
         }
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [isOpen, active, filtered, onClose, query]);
+  }, [isOpen, active, flatItems, onClose]);
 
   if (!isOpen) return null;
 
@@ -191,20 +180,23 @@ export default function SearchModal({
     <div
       className={cn(
         "fixed inset-0 z-[60] flex bg-black/40 p-4 sm:p-6",
-        variant === "center" && "items-start justify-center",
+        variant === "center" && "items-center justify-center",
         variant === "sidebar" && "items-start justify-start"
       )}
       role="dialog"
       aria-modal="true"
       aria-label="Search"
+      onClick={onClose}
     >
       <div
         className={cn(
           "flex w-full flex-col overflow-hidden border border-gray-200 bg-white shadow-xl dark:border-gray-700 dark:bg-gray-900",
-          variant === "center" && "max-w-xl rounded-lg",
+          variant === "center" &&
+            "max-w-xl max-h-[80vh] min-h-[500px] rounded-lg",
           variant === "sidebar" &&
             "h-full max-w-sm rounded-r-lg animate-slide-in-left"
         )}
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center gap-2 border-b border-gray-200 p-2 dark:border-gray-700">
           <Search className="ml-2 h-4 w-4 text-gray-500" />
@@ -231,36 +223,9 @@ export default function SearchModal({
               <X size={14} />
             </button>
           )}
-          <button
-            aria-label="Close"
-            onClick={onClose}
-            className="rounded p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-200"
-          >
-            <X size={16} />
-          </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto">
-          {query.trim() === "" && recents.length > 0 && (
-            <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-800 text-xs font-medium uppercase tracking-wide text-gray-500 flex items-center gap-2">
-              <History size={14} /> Recent searches
-            </div>
-          )}
-          {query.trim() === "" && recents.length > 0 && (
-            <ul className="p-2 grid grid-cols-2 gap-2">
-              {recents.map((r) => (
-                <li key={r}>
-                  <button
-                    className="w-full truncate rounded-md border border-gray-200 px-2 py-1 text-xs text-gray-600 hover:bg-gray-100 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
-                    onClick={() => setQuery(r)}
-                  >
-                    {r}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
-
+        <div className="flex-1 overflow-y-auto min-h-[400px] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb:hover]:bg-gray-400 dark:[&::-webkit-scrollbar-track]:bg-gray-800 dark:[&::-webkit-scrollbar-thumb]:bg-gray-600 dark:[&::-webkit-scrollbar-thumb:hover]:bg-gray-500">
           <ul className="p-2 space-y-4">
             {filtered.length === 0 && query && (
               <li className="p-6 text-center text-sm text-gray-500 dark:text-gray-400">
@@ -279,12 +244,13 @@ export default function SearchModal({
                     ? group.items.filter((i) => filtered.includes(i))
                     : group.items
                   ).map((item) => {
-                    const idx = filtered.indexOf(item);
+                    const idx = flatItems.indexOf(item);
                     const isActive = idx === active;
                     return (
                       <li key={item.slug}>
                         <Link
                           href={item.path}
+                          data-search-index={idx}
                           className={cn(
                             "group block rounded-md px-3 py-2 text-sm transition-colors",
                             isActive
@@ -295,29 +261,18 @@ export default function SearchModal({
                             if (idx >= 0) setActive(idx);
                           }}
                           onClick={() => {
-                            if (query.trim()) {
-                              const q = query.trim();
-                              setRecents((prev) => {
-                                const next = [
-                                  q,
-                                  ...prev.filter((r) => r !== q),
-                                ].slice(0, 8);
-                                saveRecents(next);
-                                return next;
-                              });
-                            }
                             onClose();
                           }}
                         >
                           <div className="font-medium flex items-center gap-2">
-                            {highlight(item.title, query)}
+                            {item.title}
                             <span className="ml-auto hidden text-[10px] rounded bg-gray-200 px-1.5 py-0.5 font-normal tracking-wide text-gray-600 dark:bg-gray-700 dark:text-gray-300 sm:inline-block">
                               {item.category}
                             </span>
                           </div>
                           {item.description && (
                             <div className="mt-0.5 line-clamp-1 text-xs text-gray-500 dark:text-gray-400">
-                              {highlight(item.description, query)}
+                              {item.description}
                             </div>
                           )}
                         </Link>

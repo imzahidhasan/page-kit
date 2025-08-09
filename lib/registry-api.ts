@@ -17,8 +17,14 @@ export function getSidebarSections(docs: DocItem[]): Array<{
   title: string;
   items: DocItem[];
 }> {
-  const byCat = getDocsByCategory(docs);
-  const priorityOrder = ["Getting Started"]; // precedence order
+  // Group items by category while preserving original array order
+  const byCat: Record<string, DocItem[]> = {};
+  docs.forEach((item) => {
+    if (!byCat[item.category]) byCat[item.category] = [];
+    byCat[item.category].push(item);
+  });
+
+  const priorityOrder = ["Getting Started", "Components", "UI"]; // precedence order for categories
   return Object.keys(byCat)
     .sort((a, b) => {
       const ai = priorityOrder.indexOf(a);
@@ -30,7 +36,7 @@ export function getSidebarSections(docs: DocItem[]): Array<{
     })
     .map((cat) => ({
       title: cat,
-      items: byCat[cat].sort((a, b) => a.title.localeCompare(b.title)),
+      items: byCat[cat], // Preserve the natural order from the docs array
     }));
 }
 
