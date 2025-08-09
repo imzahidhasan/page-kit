@@ -1,0 +1,37 @@
+---
+Title: Installation
+Description: How to install and configure Page Kit.
+---
+
+# Installation
+
+Follow these steps to set up Page Kit in a new or existing Next.js project.
+
+## 1. Create project
+
+```bash
+npx create-next-app@latest my-app
+cd my-app
+```
+
+## 2. Install dependencies
+
+```bash
+npm install lucide-react @mdx-js/react @next/mdx
+```
+
+## 3. Copy config files
+
+Add Tailwind, MDX, and configuration files similar to this repository (see `tailwind.config.ts`, `next.config.ts`).
+
+## 4. Create docs
+
+Place MDX component docs in `components/mdx-documentation/` and register them in `component-registry.ts`.
+
+## 5. Run
+
+```bash
+npm run dev
+```
+
+Your docs are now available under `/docs`.

@@ -38,10 +38,10 @@ export default function Breadcrumb({ className = "" }: BreadcrumbProps) {
 
   return (
     <nav
-      className={`flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400 ${className}`}
+      className={`flex items-center space-x-2 text-sm ${className}`}
       aria-label="Breadcrumb"
     >
-      <ol className="flex items-center space-x-2">
+      <ol className="flex items-center space-x-2 bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border border-slate-200/60 dark:border-slate-800/60 rounded-xl px-4 py-2 shadow-sm">
         {breadcrumbItems.map((item, index) => {
           const isLast = index === breadcrumbItems.length - 1;
           const Icon = item.icon;
@@ -49,18 +49,21 @@ export default function Breadcrumb({ className = "" }: BreadcrumbProps) {
           return (
             <li key={item.href} className="flex items-center">
               {index > 0 && (
-                <ChevronRight size={16} className="mx-2 text-gray-400" />
+                <ChevronRight
+                  size={14}
+                  className="mx-2 text-slate-400 dark:text-slate-500"
+                />
               )}
 
               {isLast ? (
-                <span className="font-medium text-gray-900 dark:text-gray-100">
+                <span className="font-semibold text-slate-900 dark:text-slate-100">
                   {Icon ? <Icon size={16} className="inline mr-1" /> : null}
                   {item.label}
                 </span>
               ) : (
                 <Link
                   href={item.href}
-                  className="hover:text-gray-700 dark:hover:text-gray-200 transition-colors"
+                  className="text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100 transition-colors font-medium"
                 >
                   {Icon ? <Icon size={16} className="inline mr-1" /> : null}
                   {item.label}
