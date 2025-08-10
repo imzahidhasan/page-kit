@@ -1,4 +1,12 @@
 import type { MDXComponents } from "mdx/types";
+import {
+  ComponentPreview,
+  CommandPreview,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/site-component/component-showcase";
 
 const components: MDXComponents = {
   // Headings
@@ -81,6 +89,13 @@ const components: MDXComponents = {
   em: ({ children }) => (
     <em className="italic text-gray-800 dark:text-gray-200">{children}</em>
   ),
+
+  ComponentPreview,
+  CommandPreview,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
 };
 
 export function useMDXComponents(): MDXComponents {
