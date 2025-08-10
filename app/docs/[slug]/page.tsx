@@ -19,21 +19,6 @@ export default async function ComponentDocPage({
           <MDXComponent />
         </div>
       </Suspense>
-      <div className="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
-        <div className="flex justify-between items-center">
-          <div className="text-sm text-gray-500 dark:text-gray-400">
-            Was this page helpful?
-          </div>
-          <div className="flex gap-4">
-            <button className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
-              Edit on GitHub
-            </button>
-            <button className="text-sm text-blue-600 dark:text-blue-400 hover:underline">
-              Report Issue
-            </button>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

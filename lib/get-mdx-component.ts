@@ -2,7 +2,7 @@ async function getMDXComponent(slug: string) {
   try {
   
     const mdx_module = await import(
-      `@/components/mdx-documentation/${slug}.mdx`
+      `@/mdx-documentation/${slug}.mdx`
     );
     return mdx_module.default;
   } catch (error) {

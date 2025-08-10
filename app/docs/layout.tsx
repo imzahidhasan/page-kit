@@ -7,7 +7,6 @@ import {
   Footer,
   MobileNav,
   Breadcrumb,
-  MDXContentWrapper,
 } from "@/components/site-component";
 
 export default function DocsLayout({
@@ -57,30 +56,13 @@ export default function DocsLayout({
                       <div className="relative overflow-hidden rounded-t-3xl">
                         <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-slate-300 to-transparent dark:via-slate-700"></div>
                         <div className="px-8 pt-12 lg:px-12 lg:pt-16">
-                          <MDXContentWrapper>{children}</MDXContentWrapper>
+                          {children}
                         </div>
                       </div>
 
                       {/* Content footer spacing */}
                       <div className="pb-12 lg:pb-16"></div>
                     </article>
-                  </div>
-
-                  {/* Navigation between docs */}
-                  <div className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800">
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm text-slate-500 dark:text-slate-400">
-                        Was this page helpful?
-                      </div>
-                      <div className="flex space-x-2">
-                        <button className="px-3 py-1 text-sm bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-md transition-colors">
-                          👍 Yes
-                        </button>
-                        <button className="px-3 py-1 text-sm bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-md transition-colors">
-                          👎 No
-                        </button>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </main>

@@ -24,24 +24,6 @@ const docs: DocItem[] = [
     description: "Buttons for actions and CTAs.",
     category: "Components",
   },
-  {
-    slug: "card",
-    title: "Card",
-    description: "Cards for grouping related content.",
-    category: "UI",
-  },
-  {
-    slug: "input",
-    title: "Input",
-    description: "Text inputs and form fields.",
-    category: "Components",
-  },
-  {
-    slug: "textarea",
-    title: "Textarea",
-    description: "Multi-line text inputs.",
-    category: "Input",
-  },
 ];
 
 export default docs;
