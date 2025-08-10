@@ -8,11 +8,21 @@ import SearchModal from "./search-modal";
 export default function Header() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-  const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
+
+  const toggleDarkMode = () => {
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+    document.documentElement.setAttribute(
+      "data-theme",
+      newTheme ? "dark" : "light"
+    );
+    localStorage.setItem("theme", newTheme ? "dark" : "light");
+  };
 
   // Global keyboard shortcut for search
   useEffect(() => {
@@ -27,6 +37,52 @@ export default function Header() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  // Initialize and sync dark mode with system preferences
+  useEffect(() => {
+    const initializeTheme = () => {
+      // Check for saved theme preference or default to system preference
+      const savedTheme = localStorage.getItem("theme");
+      const systemPrefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
+      let shouldUseDarkMode = false;
+
+      if (savedTheme) {
+        shouldUseDarkMode = savedTheme === "dark";
+      } else {
+        shouldUseDarkMode = systemPrefersDark;
+      }
+
+      setIsDarkMode(shouldUseDarkMode);
+      document.documentElement.setAttribute(
+        "data-theme",
+        shouldUseDarkMode ? "dark" : "light"
+      );
+    };
+
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleSystemThemeChange = (e: MediaQueryListEvent) => {
+      // Only auto-switch if user hasn't manually set a preference
+      const savedTheme = localStorage.getItem("theme");
+      if (!savedTheme) {
+        setIsDarkMode(e.matches);
+        document.documentElement.setAttribute(
+          "data-theme",
+          e.matches ? "dark" : "light"
+        );
+      }
+    };
+
+    initializeTheme();
+    mediaQuery.addEventListener("change", handleSystemThemeChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleSystemThemeChange);
+    };
+  }, []);
+
   return (
     <>
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 dark:bg-slate-900/80 dark:border-slate-700/50 shadow-sm shadow-slate-200/20 dark:shadow-slate-900/20">
@@ -39,7 +95,9 @@ export default function Header() {
                 className="group flex items-center space-x-3 transition-transform duration-200 hover:scale-105"
               >
                 <div className="relative w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg flex items-center justify-center shadow-sm group-hover:shadow-md transition-all duration-200">
-                  <span className="text-white font-bold text-sm">PK</span>
+                  <span className="text-white dark:text-gray-100 font-bold text-sm">
+                    PK
+                  </span>
                   <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg" />
                 </div>
                 <span className="font-semibold text-lg bg-gradient-to-r from-slate-900 to-slate-700 dark:from-slate-100 dark:to-slate-300 bg-clip-text text-transparent">
