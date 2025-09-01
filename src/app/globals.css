@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+* {
+  box-sizing: border-box;
+}
+
+@layer utilities {
+  html {
+    --scrollbar-color: #00000032;
+    -webkit-tap-highlight-color: transparent;
+    scrollbar-gutter: stable;
+    scrollbar-color: var(--scrollbar-color) transparent;
+    scrollbar-width: thin;
+  }
+
+  html.dark {
+    --scrollbar-color: #ffffff32;
+  }
+
+  .thin-scroll {
+    -webkit-tap-highlight-color: transparent;
+    scrollbar-gutter: stable;
+    scrollbar-color: #ffffff32 transparent;
+    scrollbar-width: thin;
+  }
+}
+
+@theme {
+  --default-mono-font-family: "Geist Mono", ui-monospace, SFMono-Regular,
+    Roboto Mono, Menlo, Monaco, Liberation Mono, DejaVu Sans Mono, Courier New,
+    monospace;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Roboto Mono, Menlo,
+    Monaco, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
+  --default-mono-font-feature-settings: normal;
+  --default-mono-font-variation-settings: normal;
+}
