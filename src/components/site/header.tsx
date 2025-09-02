@@ -1,14 +1,14 @@
 "use client";
+
 import React, { useState } from "react";
 import { ThemeSwitcher } from "./theme";
 import Link from "next/link";
 import { GitHubIcon } from "@/assets/icons/github";
-import { XIcon } from "@/assets/icons/x";
 
 import { AnimatePresence, motion } from "motion/react";
 import { SidebarMobile } from "./sidebar-mobile";
 import { X } from "lucide-react";
-import { Logo } from "@/assets/icons/logo";
+import Image from "next/image";
 
 const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -37,9 +37,9 @@ const Header = () => {
       >
         <div className="w-full px-6 py-4 flex items-center justify-between border-b border-gray-200 dark:border-zinc-800">
           <Link href="/" className="flex items-center gap-2">
-            <Logo className="size-6 fill-rose-500" />
+            <Image src="/logo.svg" alt="page-kit" width={24} height={24} />
             <span className="font-semibold text-lg text-zinc-900 dark:text-zinc-100">
-              Berlix&nbsp;UI
+              Page Kit
             </span>
           </Link>
 
@@ -69,12 +69,13 @@ const Header = () => {
               }
 
               <Link href="/" className="flex items-center gap-2">
-                <Logo className="size-6 fill-rose-500" />
+                <Image src="/logo.svg" alt="page-kit" width={24} height={24} />
                 <span className="font-semibold text-lg text-zinc-900 dark:text-zinc-100">
-                  Berlix&nbsp;UI
+                  Page Kit
                 </span>
               </Link>
             </div>
+
             <nav className=" hidden md:flex items-center gap-6 text-sm font-medium text-zinc-800 dark:text-zinc-200">
               <Link
                 className="hover:text-zinc-900 dark:hover:text-zinc-50"
@@ -91,16 +92,9 @@ const Header = () => {
             </nav>
           </div>
           <nav className="flex items-center space-x-2">
+            {/* GitHub Link */}
             <Link
-              href="https://x.com/rechesoares13"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-9 w-9 items-center justify-center"
-            >
-              <XIcon className="h-4 w-4 fill-zinc-950 dark:fill-zinc-50" />
-            </Link>
-            <Link
-              href="https://github.com/reche13/berlix"
+              href="https://github.com/imzahidhasan/page-kit"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-9 w-9 items-center justify-center"
