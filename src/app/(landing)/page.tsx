@@ -7,9 +7,17 @@ import { CallToAction } from "./_components/call-to-action";
 
 const page = () => {
   return (
-    <>
-    this is home page
-    </>
+    <div className="min-h-screen bg-gradient-to-br from-zinc-50 via-white to-zinc-100 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950">
+      <Header />
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Hero />
+        <Feature />
+        <CallToAction />
+      </main>
+      <footer className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 border-t border-zinc-200 dark:border-zinc-800">
+        <Footer />
+      </footer>
+    </div>
   );
 };
 

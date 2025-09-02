@@ -1,102 +1,178 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, scale } from "motion/react";
 import { GitHubIcon } from "@/assets/icons/github";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { TailwindIcon } from "@/assets/icons/tailwind";
 import { ReactIcon } from "@/assets/icons/react";
 import { MotionIcon } from "@/assets/icons/motion";
 import { ShadcnIcon } from "@/assets/icons/shadcn";
 import { TypeScriptIcon } from "@/assets/icons/typescript";
+import Image from "next/image";
 
 export const Hero = () => {
   return (
-    <div className="items-center my-40">
-      <div className="flex-1 flex flex-col items-center text-center">
-        <motion.h1
-          initial={{ y: 20, opacity: 0, filter: "blur(10px)" }}
-          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="font-bold flex flex-col text-5xl capitalize tracking-tight leading-[1.3]"
+    <div className="relative py-10">
+      {/* Background decoration */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-400/20 to-purple-600/20 rounded-full mix-blend-multiply filter blur-xl animate-pulse" />
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-red-600/20 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000" />
+      </div>
+
+      <div className="relative max-w-4xl mx-auto text-center">
+        {/* Logo and Badge */}
+        <motion.div
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex flex-col items-center mb-8"
         >
-          <span>
-            <span className="inline-block text-transparent bg-clip-text bg-gradient-to-b dark:from-zinc-50 from-zinc-950 dark:via-white via-zinc-800 dark:to-zinc-950 to-zinc-600">
-              Breathe
-            </span>{" "}
-            <span className="bg-gradient-to-r from-orange-500 to-rose-600 bg-clip-text text-transparent">
-              Motion
+          <div className="mb-6">
+            <Image
+              src="/images/page-kit-logo.png"
+              alt="Page Kit Logo"
+              width={80}
+              height={80}
+              className="mx-auto rounded-2xl shadow-lg"
+            />
+          </div>
+
+          <motion.div
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/50 dark:to-purple-950/50 border border-blue-200/50 dark:border-blue-800/50"
+          >
+            <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+            <span className="text-sm font-medium text-blue-700 dark:text-blue-300">
+              Ready-to-Use Component Library
             </span>
+          </motion.div>
+        </motion.div>
+
+        {/* Main Heading */}
+        <motion.h1
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+          className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
+        >
+          <span className="bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-zinc-100 dark:via-zinc-300 dark:to-zinc-100 bg-clip-text text-transparent">
+            From Concept to
           </span>
-          <span>
-            <span className="inline-block text-transparent bg-clip-text bg-gradient-to-b dark:from-zinc-50 from-zinc-950 dark:via-white via-zinc-800 dark:to-zinc-950 to-zinc-600">
-              into your
-            </span>{" "}
-            <span className="bg-gradient-to-r from-fuchsia-500 via-violet-600 to-blue-600 bg-clip-text text-transparent">
-              Components
-            </span>
+          <br />
+          <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            Production
+          </span>
+          <span className="bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-zinc-100 dark:via-zinc-300 dark:to-zinc-100 bg-clip-text text-transparent">
+            {" "}
+            in Minutes
           </span>
         </motion.h1>
 
+        {/* Subtitle */}
         <motion.p
-          initial={{ y: 20, opacity: 0, filter: "blur(10px)" }}
-          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.6, delay: 0.4, ease: "easeInOut" }}
-          className="text-base md:text-xl font-medium text-zinc-600 dark:text-zinc-400 mt-4 max-w-[32ch]"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Motion-first components for React, built with Tailwind CSS and Motion.
+          Professional{" "}
+          <span className="font-semibold text-blue-600 dark:text-blue-400">
+            React components
+          </span>{" "}
+          with smooth animations.{" "}
+          <span className="font-semibold text-purple-600 dark:text-purple-400">
+            Copy, paste, ship.
+          </span>
         </motion.p>
 
+        {/* CTA Buttons */}
         <motion.div
-          initial={{ y: 20, opacity: 0, filter: "blur(10px)" }}
-          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.8, delay: 0.7, ease: "easeInOut" }}
-          className="mt-12 flex flex-col md:flex-row items-center justify-center gap-4 w-full"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
           <motion.a
             href="/docs"
-            whileHover="hover"
-            variants={{
-              hover: {
-                boxShadow: "0px 12px 15px -12px rgba(234,88,12,1)",
-              },
+            whileHover={{
+              boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.5)",
             }}
-            className="w-full md:w-fit cursor-pointer flex items-center justify-center gap-2 px-8 h-12 py-3 rounded-full bg-zinc-950 text-zinc-50 font-medium dark:bg-zinc-50 dark:text-zinc-900"
+            whileTap={{ scale: 0.9 }}
+            className="group relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <span>Get Started</span>
-            <motion.div variants={{ hover: { x: 5 } }}>
-              <ArrowRight />
+            <motion.div initial={{ x: 0 }} transition={{ duration: 0.2 }}>
+              <ArrowRight className="w-5 h-5" />
             </motion.div>
           </motion.a>
 
           <motion.a
-            href="https://github.com/reche13/berlix"
-            className="w-full md:w-fit cursor-pointer flex items-center justify-center gap-2 h-12 px-8 py-3 rounded-full border-2 border-zinc-950 dark:text-zinc-50 font-medium dark:border-zinc-50 text-zinc-900"
+            href="https://github.com/imzahidhasan/page-kit"
+            target="_blank"
+            whileTap={{ scale: 0.9 }}
+            className="inline-flex items-center gap-2 px-8 py-4 border-2 border-zinc-300 dark:border-zinc-600 text-zinc-700 dark:text-zinc-300 font-semibold rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all duration-300"
           >
-            <GitHubIcon className="size-4 fill-zinc-950 dark:fill-zinc-50" />
-            Star on GitHub
+            <GitHubIcon className="w-5 h-5 fill-current" />
+            <span>Star on GitHub</span>
           </motion.a>
         </motion.div>
 
+        {/* Tech Stack */}
         <motion.div
-          initial={{ y: 20, opacity: 0, filter: "blur(10px)" }}
-          animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-          transition={{ duration: 0.8, delay: 1, ease: "easeInOut" }}
-          className="mt-12 flex flex-col gap-2"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
+          className="flex flex-col items-center gap-4"
         >
-          <span className="text-base font-medium text-zinc-500 dark:text-zinc-300">
-            Built with
+          <span className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+            Built with modern technologies
           </span>
 
-          <div className="flex items-center gap-3">
-            <ReactIcon className="fill-zinc-500 dark:fill-zinc-300 size-8" />
-            <TypeScriptIcon className="fill-zinc-500 dark:fill-zinc-300 size-8" />
-            <TailwindIcon className="fill-zinc-500 dark:fill-zinc-300 size-8" />
-            <MotionIcon className="fill-zinc-500 dark:fill-zinc-300 size-12" />
-            <ShadcnIcon className="stroke-zinc-500 dark:stroke-zinc-300 size-8" />
+          <div className="flex items-center justify-center gap-6 flex-wrap">
+            <motion.div
+              whileHover={{ scale: 1.1, y: -2 }}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700"
+            >
+              <ReactIcon className="w-6 h-6 fill-blue-500" />
+              <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                React
+              </span>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.1, y: -2 }}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700"
+            >
+              <TypeScriptIcon className="w-6 h-6 fill-blue-600" />
+              <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                TypeScript
+              </span>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.1, y: -2 }}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700"
+            >
+              <TailwindIcon className="w-6 h-6 fill-cyan-500" />
+              <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                Tailwind
+              </span>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ scale: 1.1, y: -2 }}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700"
+            >
+              <MotionIcon className="w-8 h-8 fill-yellow-500" />
+              <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                Motion
+              </span>
+            </motion.div>
           </div>
         </motion.div>
       </div>
-      {/* <div className="flex-1">TODO: image</div> */}
     </div>
   );
 };
