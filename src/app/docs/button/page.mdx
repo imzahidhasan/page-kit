@@ -1,0 +1,40 @@
+import ButtonPreview from "./button-preview";
+
+# Button
+
+A versatile button component with customizable styles and sizes.
+
+# Preview
+
+<Tabs defaultValue="preview" className="">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ComponentRenderer component={<ButtonPreview />} />
+  </TabsContent>
+  <TabsContent value="code">
+    <CodeBlock filePath="src/app/docs/button/button-preview.tsx" />
+  </TabsContent>
+</Tabs>
+
+# Installation
+
+## Installation
+
+<Tabs defaultValue="cli" className="">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+
+<TabsContent value="cli">
+  <Cli command={`add button`} />
+</TabsContent>
+
+  <TabsContent value="manual">
+    <CodeBlock filePath="src/components/core/button.tsx" />
+  </TabsContent>
+  
+</Tabs>

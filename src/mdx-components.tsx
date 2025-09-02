@@ -1,5 +1,15 @@
 import type { MDXComponents } from "mdx/types";
 import { createSlug } from "./lib/utils";
+import { CodeBlock } from "./components/site/code-block";
+import { ComponentRenderer } from "@/components/site/component-renderer";
+import { Cli } from "@/components/site/cli";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/site/tabs";
+import { PropsTable } from "@/components/site/props-table";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -31,5 +41,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         </h3>
       );
     },
+    CodeBlock,
+    ComponentRenderer,
+    Cli,
+    Tabs,
+    TabsList,
+    TabsTrigger,
+    TabsContent,
+    PropsTable,
   };
 }
