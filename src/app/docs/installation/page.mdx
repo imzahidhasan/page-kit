@@ -1,33 +1,22 @@
 # Installation
 
-Get started with **Berlix UI** in a few steps—whether you want to install via CLI or copy components directly from the docs. Here's the complete setup guide.
+Getting started with **Page Kit** is simple. You don’t need to install anything—just copy the component code you want and use it in your project. Here’s how to set up your environment and start using Page Kit:
 
 ---
 
-## 1. Set Up a React Framework
+## 1. Set Up Your React Project
 
-Start with any React-based framework like **Next.js**.
+You can use any React-based framework, such as **Next.js**.
 
-### Install Next.js with Create Next App
+### Create a Next.js App
 
 ```bash
 npx create-next-app@latest
 ```
 
-You'll see the following prompts:
+Follow the prompts to set up your project.
 
-```
-What is your project named? my-app
-Would you like to use TypeScript? No / Yes
-Would you like to use ESLint? No / Yes
-Would you like to use Tailwind CSS? No / Yes
-Would you like to use `src/` directory? No / Yes
-Would you like to use App Router? (recommended) No / Yes
-Would you like to customize the default import alias (@/*)? No / Yes
-What import alias would you like configured? @/*
-```
-
-### Start the App
+### Start Your App
 
 ```bash
 cd my-app
@@ -36,99 +25,51 @@ npm run dev
 
 ---
 
-## 2. Install Tailwind CSS
+## 2. Add Tailwind CSS (Optional)
 
-### Install Tailwind
+Page Kit components work great with Tailwind CSS. If you want to use Tailwind, install it:
 
 ```bash
-npm install tailwindcss @tailwindcss/postcss @tailwindcss/cli
+npm install tailwindcss postcss autoprefixer
+npx tailwindcss init -p
 ```
 
-### Create a Global CSS File
+Add Tailwind to your CSS:
 
 **`app/globals.css`**
 
 ```css
-@import "tailwindcss";
-
-@theme inline {
-  --font-display: "Inter", "sans-serif";
-  --color-primary-500: oklch(0.84 0.18 117.33);
-  --spacing: 0.25rem;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 ```
 
-### Configure PostCSS
+---
 
-**`postcss.config.js`**
+## 3. Copy Page Kit Components
 
-```js
-module.exports = {
-  plugins: {
-    "@tailwindcss/postcss": {},
-  },
-};
-```
+Browse the Page Kit documentation and copy the JSX/TSX code for the component you want (e.g., Button, Input, Card).
 
-### Start Using Tailwind
+Paste the code into your project’s components folder.
 
-**`app/page.tsx`**
+You can customize the styles and props as needed.
+
+---
+
+## 4. Use the Component
+
+Import the component into your pages or other components and start using it right away:
 
 ```tsx
+import { Button } from "./components/button";
+
 export default function Home() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return <Button>Click Me</Button>;
 }
 ```
-
----
-
-## 3. Add Animation & Utility Dependencies
-
-Berlix UI uses `motion`, `clsx`, and `tailwind-merge`.
-
-```bash
-npm install motion clsx tailwind-merge
-```
-
-### Add Utility Function
-
-**`lib/utils.ts`**
-
-```ts
-import { ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-```
-
----
-
-## 4. Install Berlix UI Components
-
-### Option A: CLI Installation
-
-```bash
-npx shadcn-ui@latest init
-```
-
-Then install components:
-
-```bash
-npx shadcn@latest add "https://ui.rechesoares.com/registry/<component-name>.json"
-```
-
-Replace `<component-name>` with the component you want (e.g., `button`, `card`, `input`).
-
-### Option B: Copy-Paste from Docs
-
-If you prefer direct control, simply copy-paste the JSX/TSX code into your project.
-
-This method gives you full flexibility and no dependency lock-in.
 
 ---
 
 ## Done
 
-You’re ready to build stunning animated UI with **Berlix UI**. Explore the components or start building right away.
+You’re ready to build beautiful, modern UIs with **Page Kit**. No installation required—just copy, paste, and start building!
