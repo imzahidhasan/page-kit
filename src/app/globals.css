@@ -37,3 +37,18 @@
   --default-mono-font-feature-settings: normal;
   --default-mono-font-variation-settings: normal;
 }
+
+
+/* Light mode */
+.shiki,
+.shiki span {
+  color: var(--shiki-light) !important;
+  background-color: var(--shiki-light-bg) !important;
+}
+
+/* Dark mode */
+.dark .shiki,
+.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}

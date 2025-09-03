@@ -12,16 +12,18 @@ export const CodeRenderer = async ({
 }: CodeRendererProps) => {
   const html = await codeToHtml(code, {
     lang,
-    theme: "github-dark-default",
-    colorReplacements: {
-      "#0d1117": "#0a0a0a",
+    themes: {
+      light: "slack-ochin",
+      dark: "aurora-x",
     },
+    defaultColor: false,
   });
 
   return (
-    <div className="font-normal text-sm bg-zinc-950">
+    <div className="font-normal text-sm">
       <div
-        style={{ padding: "16px", paddingRight: "20px" }}
+        className="bg-white dark:bg-[#07090F]"
+        style={{ padding: "20px"}}
         dangerouslySetInnerHTML={{ __html: html }}
       />
     </div>

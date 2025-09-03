@@ -16,6 +16,7 @@ export const CodeBlock = ({
   code = "",
   lang = "tsx",
 }: CodeBlockProps) => {
+  
   const fileContent = filePath ? extractCode(filePath) : code;
 
   return (
@@ -23,7 +24,7 @@ export const CodeBlock = ({
       <CodeCopy code={fileContent} />
       <div
         className={cn(
-          "not-prose relative max-h-[400px] thin-scroll overflow-auto  w-full rounded-lg text-sm bg-zinc-950"
+          "not-prose relative max-h-[400px] thin-scroll overflow-auto  w-full rounded-lg text-sm"
         )}
       >
         <CodeRenderer code={fileContent} lang={lang} />
