@@ -24,7 +24,7 @@ export const PropsTable = ({
         {props.map((prop) => (
           <tr
             key={prop.name}
-            className="font-medium text-sm divide-x divide-zinc-200 dark:divide-zinc-600 text-zinc-500 dark:text-zinc-400"
+            className="font-medium text-sm divide-x divide-zinc-200 dark:divide-zinc-600 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors"
           >
             <td className="py-2 md:py-3 px-4 font-mono">{prop.name}</td>
             <td className="py-2 md:py-3 px-4 font-mono">{prop.type}</td>
