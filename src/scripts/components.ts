@@ -17,11 +17,11 @@ type ComponentType = Omit<
 
 export const components: ComponentType[] = [
   {
-    name: "checkbox",
-    title: "Checkbox",
+    name: "button",
+    title: "Button",
     description:
-      "A smooth, animated checkbox component with customizable color, size, and duration.",
-    path: path.join(__dirname, "../components/core/checkbox.tsx"),
+      "A smooth, animated button component with customizable color, size, and duration.",
+    path: path.join(__dirname, "../components/core/button.tsx"),
     dependencies: ["motion"],
   },
   {

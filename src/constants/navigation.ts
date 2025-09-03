@@ -16,10 +16,11 @@ export const navigation: NavigationItem[] = [
     ],
   },
   {
+    label: "Components",
+    children: [{ label: "Button", href: "/docs/button" }],
+  },
+  {
     label: "Forms",
-    children: [
-      { label: "Checkbox", href: "/docs/checkbox" },
-      { label: "Input", href: "/docs/input" },
-    ],
+    children: [{ label: "Input", href: "/docs/input" }],
   },
 ];
