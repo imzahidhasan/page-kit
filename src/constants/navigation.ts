@@ -13,14 +13,19 @@ export const navigation: NavigationItem[] = [
     children: [
       { label: "Introduction", href: "/docs" },
       { label: "Installation", href: "/docs/installation" },
+      { label: "Components", href: "/docs/components" }
     ],
   },
   {
-    label: "Components",
-    children: [{ label: "Button", href: "/docs/button" }],
+    label: "Basic",
+    children: [
+      { label: "Button", href: "/docs/button" },
+    ],
   },
   {
     label: "Forms",
-    children: [{ label: "Input", href: "/docs/input" }],
+    children: [
+      { label: "Input", href: "/docs/input" },
+    ],
   },
 ];
