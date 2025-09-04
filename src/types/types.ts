@@ -33,3 +33,10 @@ export interface RegistryItemSchema {
   cssVars?: CssVars;
   files: RegistryFile[];
 }
+
+
+
+export interface GitHubStarsProps {
+  repository: string; 
+  className?: string;
+}

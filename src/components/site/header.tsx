@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { ThemeSwitcher } from "./theme";
 import Link from "next/link";
-import { GitHubIcon } from "@/assets/icons/github";
+import { GitHubStars } from "./github-stars";
 
 import { AnimatePresence, motion } from "motion/react";
 import { SidebarMobile } from "./sidebar-mobile";
@@ -85,23 +85,23 @@ const Header = () => {
               </Link>
               <Link
                 className="hover:text-zinc-900 dark:hover:text-zinc-50"
-                href="/docs/text-circle"
+                href="/components"
               >
                 Components
               </Link>
             </nav>
           </div>
 
-          
           <nav className="flex items-center space-x-2">
             {/* GitHub Link */}
             <Link
               href="https://github.com/imzahidhasan/page-kit"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-9 w-9 items-center justify-center"
+              className="inline-flex h-9 px-3 items-center justify-center rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors duration-200"
+              aria-label="View on GitHub"
             >
-              <GitHubIcon className="h-4 w-4 fill-zinc-950 dark:fill-zinc-50" />
+              <GitHubStars repository="imzahidhasan/page-kit" />
             </Link>
             <ThemeSwitcher />
           </nav>
