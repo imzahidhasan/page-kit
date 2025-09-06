@@ -1,48 +1,146 @@
 # Installation
 
-Getting started with **Page Kit** is simple. You don’t need to install anything—just copy the component code you want and use it in your project. Here’s how to set up your environment and start using Page Kit:
+Getting started with **Page Kit** is simple. You don't need to install anything—just add component using cli or copy the component code you want and use it in your project. Here's how to set up your environment and start using Page Kit:
 
 ---
 
 ## 1. Set Up Your React Project
 
-You can use any React-based framework, such as **Next.js**.
+You can use any React-based framework. Choose one of the options below:
 
-### Create a Next.js App
+### Option A: Next.js (App Router)
 
-```bash
-npx create-next-app@latest
-```
+#### Create a Next.js App
 
-Follow the prompts to set up your project.
+<CodeBlock code={`npx create-next-app@latest`} lang="bash" />
 
-### Start Your App
+Follow the prompts to set up your project with the following options:
 
-```bash
+- When asked about TypeScript, select **Yes** or **No** based on your preference
+- When asked about Tailwind CSS, select **Yes** (this will install and configure Tailwind for you)
+- For the App Router, select **Yes**
+
+#### Start Your App
+
+<CodeBlock
+  code={`
 cd my-app
 npm run dev
-```
+`}
+  lang="bash"
+/>
+
+### Option B: Vite
+
+#### Create a Vite App
+
+<CodeBlock code={`npm create vite@latest`} lang="bash" />
+
+Follow the prompts to set up your project with the following options:
+
+<CodeBlock
+  code={`│
+◇  Project name:
+│  my-app
+│
+◇  Select a framework:
+│  React
+│
+◇  Select a variant:
+│  TypeScript or JavaScript`}
+
+lang="bash"
+/>
+
+#### Navigate to your project and install dependencies
+
+<CodeBlock
+  code={`
+cd my-app
+npm install
+`}
+  lang="bash"
+/>
+
+#### Start Your App
+
+<CodeBlock code={`npm run dev`} lang="bash" />
 
 ---
 
-## 2. Add Tailwind CSS (Optional)
+## 2. Add Tailwind CSS
 
-Page Kit components work great with Tailwind CSS. If you want to use Tailwind, install it:
+Page Kit components are built with Tailwind CSS. You'll need to add Tailwind to your project if it's not already included.
 
-```bash
-npm install tailwindcss postcss autoprefixer
-npx tailwindcss init -p
-```
+### For Next.js
 
-Add Tailwind to your CSS:
+If you selected Tailwind CSS during Next.js setup, it's already configured. Otherwise:
 
-**`app/globals.css`**
+<CodeBlock
+  code={`
+npm install tailwindcss @tailwindcss/postcss postcss
+`}
+  lang="bash"
+/>
 
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
+Configure **`postcss.config.mjs`** file to include the Tailwind CSS plugin:
+
+<CodeBlock code={`
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
+      `}
+    / >
+
+Add Tailwind CSS to **`app/globals.css`** as shown below.:
+
+<CodeBlock
+  code={`
+@import "tailwindcss";
+      `}
+  lang="css"
+/>
+
+That's it! Tailwind CSS is now set up in your Next.js project.
+
+### For Vite
+
+<CodeBlock
+  code={`
+npm install tailwindcss @tailwindcss/vite
+`}
+  lang="bash"
+/>
+
+Edit your **`vite.config.ts`**:
+
+<CodeBlock
+      code={`
+import { defineConfig } from 'vite'
+import tailwindcss from '@tailwindcss/vite'
+
+export default defineConfig({
+  plugins: [
+    tailwindcss(),
+  ],
+})}
+`}
+  lang="javascript"
+/>
+
+Add Tailwind CSS to **`app/globals.css`** as shown below.:
+
+<CodeBlock
+  code={`
+@import "tailwindcss";
+      `}
+  lang="css"
+/>
+
 
 ---
 
@@ -50,7 +148,7 @@ Add Tailwind to your CSS:
 
 Browse the Page Kit documentation and copy the JSX/TSX code for the component you want (e.g., Button, Input, Card).
 
-Paste the code into your project’s components folder.
+Paste the code into your project's components folder.
 
 You can customize the styles and props as needed.
 
@@ -60,16 +158,19 @@ You can customize the styles and props as needed.
 
 Import the component into your pages or other components and start using it right away:
 
-```tsx
-import { Button } from "./components/button";
+<CodeBlock
+      code={`
+import { Button } from "./components/ui/button";
 
 export default function Home() {
   return <Button>Click Me</Button>;
 }
-```
+  `}
+  language="tsx"
+/>
 
 ---
 
 ## Done
 
-You’re ready to build beautiful, modern UIs with **Page Kit**. No installation required—just copy, paste, and start building!
+You're ready to build beautiful, modern UIs with **Page Kit**. No installation required—just copy, paste, and start building!
