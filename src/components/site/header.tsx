@@ -5,7 +5,7 @@ import { ThemeSwitcher } from "./theme";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { GitHubStars } from "./github-stars";
-import { Input } from "@/components/core/input";
+import  Input  from "@/components/core/input";
 import { navigation } from "@/constants/navigation";
 
 import { AnimatePresence, motion } from "motion/react";

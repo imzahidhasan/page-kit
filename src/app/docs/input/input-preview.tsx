@@ -9,6 +9,7 @@ const InputPreview = () => {
     <Input
       label="Email Address"
       value={value}
+      placeholder="example@email.com"
       onChange={(e) => setValue(e.target.value)}
     />
   );
