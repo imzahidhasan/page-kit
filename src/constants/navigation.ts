@@ -22,10 +22,4 @@ export const navigation: NavigationItem[] = [
       { label: "Button", href: "/docs/button" },
     ],
   },
-  {
-    label: "Forms",
-    children: [
-      { label: "Input", href: "/docs/input" },
-    ],
-  },
 ];

@@ -5,7 +5,6 @@ import { ThemeSwitcher } from "./theme";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { GitHubStars } from "./github-stars";
-import  Input  from "@/components/core/input";
 import { navigation } from "@/constants/navigation";
 
 import { AnimatePresence, motion } from "motion/react";
@@ -177,7 +176,7 @@ const Header = () => {
                     className="relative"
                   >
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-zinc-400 size-4 transition-colors duration-200" />
-                    <Input
+                    <input
                       type="text"
                       placeholder="Search documentation..."
                       value={searchQuery}
@@ -322,7 +321,7 @@ const Header = () => {
             <form onSubmit={handleSearch} className="relative w-full">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-zinc-400 size-4 transition-colors duration-200" />
-                <Input
+                <input
                   type="text"
                   placeholder="Search documentation..."
                   value={searchQuery}

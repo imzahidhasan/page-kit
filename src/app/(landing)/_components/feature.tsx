@@ -66,7 +66,7 @@ export const Feature = () => {
         </motion.p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
         {features.map((feature, index) => (
           <motion.div
             key={feature.title}
@@ -100,49 +100,6 @@ export const Feature = () => {
           </motion.div>
         ))}
       </div>
-
-      {/* Product Preview */}
-      <motion.div
-        initial={{ y: 40, opacity: 0 }}
-        whileInView={{ y: 0, opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="text-center"
-      >
-        <h3 className="text-2xl sm:text-3xl font-bold mb-4">
-          <span className="bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 bg-clip-text text-transparent">
-            See Page Kit in Action
-          </span>
-        </h3>
-
-        <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-8 max-w-2xl mx-auto">
-          Experience smooth animations and beautiful components that make your
-          projects stand out.
-        </p>
-
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.3 }}
-          className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl"
-          style={{
-            boxShadow: "0px -30px 80px -40px rgba(59, 130, 246, 0.5)",
-          }}
-        >
-          <img
-            src="/images/product.png"
-            alt="Page Kit Components Preview"
-            className="w-full block dark:hidden"
-          />
-          <img
-            src="/images/product-dark.png"
-            alt="Page Kit Components Preview Dark"
-            className="w-full hidden dark:block"
-          />
-
-          {/* Gradient overlay */}
-          <div className="absolute bottom-0 left-0 w-full h-1/3 z-10 bg-gradient-to-b from-transparent via-white/50 to-white dark:via-zinc-950/50 dark:to-zinc-950" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 };

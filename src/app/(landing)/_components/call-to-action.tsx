@@ -7,7 +7,7 @@ import { ArrowRight, Download, BookOpen } from "lucide-react";
 
 export const CallToAction = () => {
   return (
-    <section className="py-20">
+    <section className="py-10">
       {/* CLI Section */}
       <motion.div
         initial={{ y: 40, opacity: 0 }}
