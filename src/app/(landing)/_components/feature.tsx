@@ -2,37 +2,37 @@
 
 import React from "react";
 import { motion } from "motion/react";
-import { Copy, Palette, Zap, Code2 } from "lucide-react";
+import { Terminal, Palette, Zap, Code2 } from "lucide-react";
 
 export const Feature = () => {
   const features = [
     {
-      icon: Copy,
-      title: "Copy & Paste Ready",
+      icon: Terminal,
+      title: "Instant CLI Integration",
       description:
-        "Simply copy the component code and paste it into your project. No complex setup required.",
-      color: "from-blue-500 to-cyan-500",
+        "Use our powerful CLI to instantly add components to your project. One command and you're ready to go.",
+      color: "from-cyan-500 to-sky-500",
     },
     {
       icon: Zap,
       title: "Performance Optimized",
       description:
         "Built with performance in mind. Smooth animations that don't compromise on speed.",
-      color: "from-yellow-500 to-orange-500",
+      color: "from-lime-500 to-green-500",
     },
     {
       icon: Palette,
       title: "Fully Customizable",
       description:
         "Every component is designed to be easily customized to match your brand and design system.",
-      color: "from-purple-500 to-pink-500",
+      color: "from-blue-500 to-cyan-500",
     },
     {
       icon: Code2,
       title: "TypeScript First",
       description:
         "Written in TypeScript with full type safety and excellent developer experience.",
-      color: "from-green-500 to-emerald-500",
+      color: "from-emerald-500 to-teal-500",
     },
   ];
 
@@ -49,7 +49,7 @@ export const Feature = () => {
           <span className="bg-gradient-to-r from-zinc-900 to-zinc-600 dark:from-zinc-100 dark:to-zinc-400 bg-clip-text text-transparent">
             Why Choose
           </span>{" "}
-          <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-lime-500 via-green-500 to-emerald-500 bg-clip-text text-transparent">
             Page Kit?
           </span>
         </motion.h2>
@@ -75,7 +75,7 @@ export const Feature = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
             whileHover={{ y: -5, scale: 1.02 }}
-            className="group relative p-6 rounded-2xl bg-white/50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700 backdrop-blur-sm hover:shadow-xl transition-all duration-300"
+            className="group relative p-6 rounded-2xl bg-white/50 dark:bg-zinc-800/50 border border-cyan-200/50 dark:border-cyan-700/50 backdrop-blur-sm hover:shadow-xl transition-all duration-300"
           >
             <div className="relative z-10">
               <div

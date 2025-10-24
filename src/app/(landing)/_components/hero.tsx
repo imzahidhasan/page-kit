@@ -1,12 +1,12 @@
 "use client";
 
-import { motion, scale } from "motion/react";
+import { motion } from "motion/react";
 import { GitHubIcon } from "@/assets/icons/github";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { TailwindIcon } from "@/assets/icons/tailwind";
 import { ReactIcon } from "@/assets/icons/react";
 import { MotionIcon } from "@/assets/icons/motion";
-import { ShadcnIcon } from "@/assets/icons/shadcn";
+
 import { TypeScriptIcon } from "@/assets/icons/typescript";
 import Image from "next/image";
 
@@ -15,8 +15,8 @@ export const Hero = () => {
     <div className="relative py-10">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-400/20 to-purple-600/20 rounded-full mix-blend-multiply filter blur-xl animate-pulse" />
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-red-600/20 rounded-full mix-blend-multiply filter blur-xl animate-pulse delay-1000" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-cyan-400/20 to-sky-500/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-xl animate-pulse" />
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-gradient-to-r from-lime-400/20 to-green-500/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-xl animate-pulse delay-1000" />
       </div>
 
       <div className="relative max-w-4xl mx-auto text-center">
@@ -41,10 +41,10 @@ export const Hero = () => {
             initial={{ y: 10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/50 dark:to-purple-950/50 border border-blue-200/50 dark:border-blue-800/50"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-cyan-50 to-lime-50 dark:from-cyan-950/50 dark:to-lime-950/50 border border-cyan-200/50 dark:border-cyan-800/50"
           >
-            <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-            <span className="text-sm font-medium text-blue-700 dark:text-blue-300">
+            <Sparkles className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+            <span className="text-sm font-medium text-cyan-700 dark:text-cyan-300">
               Ready-to-Use Component Library
             </span>
           </motion.div>
@@ -57,16 +57,16 @@ export const Hero = () => {
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
         >
-          <span className="bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-zinc-100 dark:via-zinc-300 dark:to-zinc-100 bg-clip-text text-transparent">
-            From Concept to
+          <span className="bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-500 bg-clip-text text-transparent">
+            Animated Components.
           </span>
           <br />
-          <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-            Production
-          </span>
           <span className="bg-gradient-to-r from-zinc-900 via-zinc-700 to-zinc-900 dark:from-zinc-100 dark:via-zinc-300 dark:to-zinc-100 bg-clip-text text-transparent">
-            {" "}
-            in Minutes
+            Beautiful Blocks.
+          </span>
+          <br />
+          <span className="bg-gradient-to-r from-lime-500 via-green-500 to-emerald-500 bg-clip-text text-transparent">
+            Delivered Instantly
           </span>
         </motion.h1>
 
@@ -77,14 +77,19 @@ export const Hero = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Professional{" "}
-          <span className="font-semibold text-blue-600 dark:text-blue-400">
-            React components
+          Add{" "}
+          <span className="font-semibold text-cyan-600 dark:text-cyan-400">
+            motion
           </span>{" "}
-          with smooth animations.{" "}
-          <span className="font-semibold text-purple-600 dark:text-purple-400">
-            Copy, paste, ship.
+          and{" "}
+          <span className="font-semibold text-lime-600 dark:text-lime-400">
+            elegance
+          </span>{" "}
+          to your app — instantly with{" "}
+          <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+            PageKit
           </span>
+          .
         </motion.p>
 
         {/* CTA Buttons */}
@@ -97,10 +102,10 @@ export const Hero = () => {
           <motion.a
             href="/docs"
             whileHover={{
-              boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.5)",
+              boxShadow: "0 10px 25px -5px rgba(6, 182, 212, 0.5)",
             }}
             whileTap={{ scale: 0.9 }}
-            className="group relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+            className="group relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <span>Get Started</span>
             <motion.div initial={{ x: 0 }} transition={{ duration: 0.2 }}>
@@ -112,7 +117,7 @@ export const Hero = () => {
             href="https://github.com/imzahidhasan/page-kit"
             target="_blank"
             whileTap={{ scale: 0.9 }}
-            className="inline-flex items-center gap-2 px-8 py-4 border-2 border-zinc-300 dark:border-zinc-600 text-zinc-700 dark:text-zinc-300 font-semibold rounded-full hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 border-2 border-cyan-300 dark:border-cyan-600 text-cyan-700 dark:text-cyan-300 font-semibold rounded-full hover:bg-cyan-50 dark:hover:bg-cyan-900/20 transition-all duration-300"
           >
             <GitHubIcon className="w-5 h-5 fill-current" />
             <span>Star on GitHub</span>
