@@ -24,12 +24,4 @@ export const components: ComponentType[] = [
     path: path.join(__dirname, "../components/core/button.tsx"),
     dependencies: ["motion"],
   },
-  {
-    name: "input",
-    title: "Input",
-    description:
-      "A sleek, animated text input with a floating label that gracefully moves up on focus.",
-    path: path.join(__dirname, "../components/core/input.tsx"),
-    dependencies: ["motion"],
-  },
 ];

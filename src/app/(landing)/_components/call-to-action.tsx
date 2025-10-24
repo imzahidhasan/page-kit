@@ -45,7 +45,7 @@ export const CallToAction = () => {
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-emerald-500 to-lime-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
 
             <div className="relative bg-white dark:bg-zinc-900 backdrop-blur-sm border border-zinc-200 dark:border-zinc-700 rounded-2xl overflow-hidden shadow-2xl">
-              <Cli command={`add @pagekit/button`} />
+              <Cli command={`add @pagekit/[component-name]`} />
             </div>
           </div>
         </motion.div>
