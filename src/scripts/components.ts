@@ -24,4 +24,11 @@ export const components: ComponentType[] = [
     path: path.join(__dirname, "../components/core/button.tsx"),
     dependencies: ["motion"],
   },
+  {
+    name: "demo",
+    title: "Demo",
+    description: "A demo component for page-kit.",
+    path: path.join(__dirname, "../components/core/demo.tsx"),
+    dependencies: [],
+  }
 ];

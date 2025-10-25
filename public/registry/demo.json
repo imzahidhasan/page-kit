@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "demo",
+  "title": "Demo",
+  "description": "A demo component for page-kit.",
+  "author": "Reche Soares",
+  "type": "registry:ui",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "cssVars": {
+    "dark": {},
+    "light": {}
+  },
+  "files": [
+    {
+      "path": "demo.tsx",
+      "content": "import React from 'react'\r\n\r\nconst Demo = () => {\r\n  return (\r\n    <div>this is a demo component for page-kit</div>\r\n  )\r\n}\r\n\r\nexport default Demo",
+      "type": "registry:ui"
+    }
+  ]
+}

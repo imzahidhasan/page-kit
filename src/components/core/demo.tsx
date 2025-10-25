@@ -1,11 +1,9 @@
-import React from "react";
+import React from 'react'
 
-const demo = () => {
+const Demo = () => {
   return (
-    <div className=" text-2xl text-red-600">
-      this is a demo components for <strong>page-kit</strong>
-    </div>
-  );
-};
+    <div>this is a demo component for page-kit</div>
+  )
+}
 
-export default demo;
+export default Demo
