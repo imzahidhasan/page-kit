@@ -20,6 +20,7 @@ export const navigation: NavigationItem[] = [
     label: "Basic",
     children: [
       { label: "Button", href: "/docs/button" },
+      { label: "Demo", href: "/docs/demo" }
     ],
   },
 ];
