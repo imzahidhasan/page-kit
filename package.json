@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "npm run build:registry",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
