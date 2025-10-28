@@ -1,5 +1,4 @@
-import path from "path";
-import { RegistryItemSchema, RegistryType } from "../types/types";
+import type { RegistryItemSchema } from "../types/types";
 
 type ComponentType = Omit<
   RegistryItemSchema,
@@ -7,28 +6,22 @@ type ComponentType = Omit<
 > &
   Partial<Pick<RegistryItemSchema, "type" | "author">> & {
     path: string;
-    files?: {
-      path: string;
-      name: string;
-      content: string;
-      type: RegistryType;
-    }[];
   };
 
-export const components: ComponentType[] = [
+export const components = [
   {
     name: "button",
     title: "Button",
     description:
       "A smooth, animated button component with customizable color, size, and duration.",
-    path: path.join(__dirname, "../components/core/button.tsx"),
+    path: "src/components/core/button.tsx",
     dependencies: ["motion"],
   },
   {
     name: "demo",
     title: "Demo",
     description: "A demo component for page-kit.",
-    path: path.join(__dirname, "../components/core/demo.tsx"),
+    path: "src/components/core/demo.tsx",
     dependencies: [],
-  }
-];
+  },
+] as const satisfies readonly ComponentType[];
