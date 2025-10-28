@@ -3,10 +3,11 @@ import type { RegistryItemSchema } from "../types/types";
 type ComponentType = Omit<
   RegistryItemSchema,
   "$schema" | "files" | "type" | "author"
-> &
-  Partial<Pick<RegistryItemSchema, "type" | "author">> & {
-    path: string;
-  };
+> & {
+  path: string;
+  type?: RegistryItemSchema["type"];
+  author?: RegistryItemSchema["author"];
+};
 
 export const components = [
   {
