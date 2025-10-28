@@ -5,7 +5,7 @@ import { ThemeSwitcher } from "./theme";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { GitHubStars } from "./github-stars";
-import { navigation } from "@/constants/navigation";
+import { navigation } from "@/navigation/navigation";
 
 import { AnimatePresence, motion } from "motion/react";
 import { SidebarMobile } from "./sidebar-mobile";
