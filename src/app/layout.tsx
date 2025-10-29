@@ -4,7 +4,7 @@ import { geistMono, geistSans } from "@/assets/fonts";
 import { Analytics } from "@vercel/analytics/next";
 
 
-export { metadata } from "@/data/metadata";
+export { metadata } from "@/meta/metadata";
 
 
 export default function RootLayout({

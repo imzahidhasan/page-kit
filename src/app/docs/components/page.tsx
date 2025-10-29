@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { navigation } from "@/constants/navigation";
+import { navigation } from "@/navigation/navigation";
 
 const page = () => {
   const allComponents = navigation.flatMap((section) =>
