@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
+import { composeRefs } from "@radix-ui/react-compose-refs";
 
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
@@ -44,12 +45,12 @@ const TabsTrigger = React.forwardRef<
     classNameIndicator?: string;
   }
 >(({ className, children, classNameIndicator, ...props }, ref) => {
-  const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const internalRef = React.useRef<HTMLButtonElement>(null);
   const [isActive, setIsActive] = React.useState(false);
   const tabsId = React.useContext(TabsContext);
 
   React.useEffect(() => {
-    const element = triggerRef.current;
+    const element = internalRef.current;
     if (element) {
       setIsActive(element.dataset.state === "active");
 
@@ -65,7 +66,7 @@ const TabsTrigger = React.forwardRef<
 
   return (
     <TabsPrimitive.Trigger
-      ref={triggerRef}
+      ref={composeRefs(ref, internalRef)}
       className={cn(
         "relative inline-flex h-10 items-center justify-center rounded-none bg-transparent px-4 py-1 pt-2 pb-3 text-sm font-medium whitespace-nowrap text-zinc-500 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-zinc-900 dark:text-zinc-400 dark:data-[state=active]:text-zinc-50",
         className

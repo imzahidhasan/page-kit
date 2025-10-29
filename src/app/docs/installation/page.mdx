@@ -1,176 +1,100 @@
-# Installation
+import PagekitTab from "@/components/site/pagekit-tab";
 
-Getting started with **Page Kit** is simple. You don't need to install anything—just add component using cli or copy the component code you want and use it in your project. Here's how to set up your environment and start using Page Kit:
+## Installation
 
----
+Choose your framework to view the recommended steps.
 
-## 1. Set Up Your React Project
-
-You can use any React-based framework. Choose one of the options below:
-
-### Option A: Next.js (App Router)
-
-#### Create a Next.js App
-
-<CodeBlock code={`npx create-next-app@latest`} lang="bash" />
-
-Follow the prompts to set up your project with the following options:
-
-- When asked about TypeScript, select **Yes** or **No** based on your preference
-- When asked about Tailwind CSS, select **Yes** (this will install and configure Tailwind for you)
-- For the App Router, select **Yes**
-
-#### Start Your App
-
-<CodeBlock
-  code={`
+<PagekitTab
+  tabs={[
+  {
+    value: "nextjs",
+    label: "Next.js",
+    content: (
+      <div className="space-y-4">
+        <p>
+          Install Page Kit alongside the tooling you need for a standard Next.js
+          project.
+        </p>
+        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
+          <code>{`npx create-next-app@latest my-app --typescript
 cd my-app
-npm run dev
-`}
-  lang="bash"
-/>
-
-### Option B: Vite
-
-#### Create a Vite App
-
-<CodeBlock code={`npm create vite@latest`} lang="bash" />
-
-Follow the prompts to set up your project with the following options:
-
-<CodeBlock
-  code={`│
-◇  Project name:
-│  my-app
-│
-◇  Select a framework:
-│  React
-│
-◇  Select a variant:
-│  TypeScript or JavaScript`}
-
-lang="bash"
-/>
-
-#### Navigate to your project and install dependencies
-
-<CodeBlock
-  code={`
-cd my-app
-npm install
-`}
-  lang="bash"
-/>
-
-#### Start Your App
-
-<CodeBlock code={`npm run dev`} lang="bash" />
-
----
-
-## 2. Add Tailwind CSS
-
-Page Kit components are built with Tailwind CSS. You'll need to add Tailwind to your project if it's not already included.
-
-### For Next.js
-
-If you selected Tailwind CSS during Next.js setup, it's already configured. Otherwise:
-
-<CodeBlock
-  code={`
-npm install tailwindcss @tailwindcss/postcss postcss
-`}
-  lang="bash"
-/>
-
-Configure **`postcss.config.mjs`** file to include the Tailwind CSS plugin:
-
-<CodeBlock code={`
-const config = {
-  plugins: {
-    "@tailwindcss/postcss": {},
+npm install page-kit tailwindcss motion`}</code>
+        </pre>
+        <ol className="list-decimal space-y-2 pl-5 text-sm leading-6">
+          <li>
+            Run the generator to scaffold shadcn config:{" "}
+            {`npx shadcn@latest init`}.
+          </li>
+          <li>
+            Copy the contents of <code>src/components/site</code> into your
+            project and update the import aliases to match your setup.
+          </li>
+          <li>
+            Restart the dev server with <code>npm run dev</code> and verify the
+            tabs render.
+          </li>
+        </ol>
+      </div>
+    ),
   },
-};
-
-export default config;
-      `}
-    / >
-
-Add Tailwind CSS to **`app/globals.css`** as shown below.:
-
-<CodeBlock
-  code={`
-@import "tailwindcss";
-      `}
-  lang="css"
+  {
+    value: "vite",
+    label: "Vite + React",
+    content: (
+      <div className="space-y-4">
+        <p>Set up a Vite project, then install the Page Kit dependencies.</p>
+        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
+          <code>{`npm create vite@latest my-app -- --template react-ts
+cd my-app
+npm install page-kit tailwindcss @radix-ui/react-tabs motion`}</code>
+        </pre>
+        <ol className="list-decimal space-y-2 pl-5 text-sm leading-6">
+          <li>
+            Run <code>npx tailwindcss init -p</code> and configure the content
+            paths.
+          </li>
+          <li>
+            Import <code>PagekitTab</code> in a page or component and pass a
+            tabs array to render the MDX-friendly content.
+          </li>
+          <li>
+            Start the dev server with <code>npm run dev</code>.
+          </li>
+        </ol>
+      </div>
+    ),
+  },
+  {
+    value: "astro",
+    label: "Astro",
+    content: (
+      <div className="space-y-4">
+        <p>
+          Astro works great with React islands. Install the React integration
+          and pull in Page Kit components.
+        </p>
+        <pre className="rounded-lg bg-muted px-4 py-3 text-sm">
+          <code>{`npm create astro@latest my-docs -- --template docs
+cd my-docs
+npm install @astrojs/react page-kit @radix-ui/react-tabs motion`}</code>
+        </pre>
+        <ol className="list-decimal space-y-2 pl-5 text-sm leading-6">
+          <li>
+            Enable the React integration: <code>npx astro add react</code>.
+          </li>
+          <li>
+            Import <code>PagekitTab</code> into an Astro component using{" "}
+           
+          </li>
+          <li>
+            Run <code>npm run dev</code> and verify the tabbed installation
+            guides.
+          </li>
+        </ol>
+      </div>
+    ),
+  },
+]}
+  defaultValue="nextjs"
+  ariaLabel="Framework installation tabs"
 />
-
-That's it! Tailwind CSS is now set up in your Next.js project.
-
-### For Vite
-
-<CodeBlock
-  code={`
-npm install tailwindcss @tailwindcss/vite
-`}
-  lang="bash"
-/>
-
-Edit your **`vite.config.ts`**:
-
-<CodeBlock
-      code={`
-import { defineConfig } from 'vite'
-import tailwindcss from '@tailwindcss/vite'
-
-export default defineConfig({
-  plugins: [
-    tailwindcss(),
-  ],
-})}
-`}
-  lang="javascript"
-/>
-
-Add Tailwind CSS to **`app/globals.css`** as shown below.:
-
-<CodeBlock
-  code={`
-@import "tailwindcss";
-      `}
-  lang="css"
-/>
-
-
----
-
-## 3. Copy Page Kit Components
-
-Browse the Page Kit documentation and copy the JSX/TSX code for the component you want (e.g., Button, Input, Card).
-
-Paste the code into your project's components folder.
-
-You can customize the styles and props as needed.
-
----
-
-## 4. Use the Component
-
-Import the component into your pages or other components and start using it right away:
-
-<CodeBlock
-      code={`
-import { Button } from "./components/ui/button";
-
-export default function Home() {
-  return <Button>Click Me</Button>;
-}
-  `}
-  language="tsx"
-/>
-
----
-
-## Done
-
-You're ready to build beautiful, modern UIs with **Page Kit**. No installation required—just copy, paste, and start building!
