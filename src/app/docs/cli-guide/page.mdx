@@ -1,0 +1,344 @@
+import { CodeBlock } from "@/components/site/code-block";
+
+# CLI Guide
+
+The shadcn CLI is a powerful command-line tool that makes it easy to add and manage components in your project.
+
+**Key difference:** Unlike traditional npm packages, shadcn doesn't install as a dependency. Instead, it **copies the component code directly into your project**, giving you complete control to modify and customize it however you want.
+
+## Why Use the CLI?
+
+- **Quick Setup** - Get started in seconds
+- **Own Your Code** - Components are copied to your project, not hidden in node_modules
+- **Full Customization** - Modify components freely to match your needs
+- **Automatic Configuration** - Handles dependencies and setup for you
+- **Easy Discovery** - Search, view, and explore components before installing
+
+## Getting Started
+
+No installation needed! Use `npx` to run commands directly:
+
+<CodeBlock code="npx shadcn@latest init" lang="bash" />
+
+> **Tip:** You can install it globally if you prefer: `npm install -g shadcn@latest`
+
+## Commands
+
+### `init` - Set Up Your Project
+
+The first command you'll run. It configures your project to work with shadcn components.
+
+#### Basic Usage
+
+<CodeBlock code="npx shadcn@latest init" lang="bash" />
+
+When you run this, you'll be asked a few simple questions:
+
+<CodeBlock
+  code={`Which style would you like to use? › New York
+Which color would you like to use as base color? › Zinc
+Do you want to use CSS variables for colors? › yes / no`}
+  lang="bash"
+/>
+
+#### What Happens Behind the Scenes
+
+Creates a `components.json` file (your configuration)  
+Installs necessary packages (tailwindcss, clsx, etc.)  
+Sets up your theme colors  
+Configures import paths (so you can use `@/components`)
+
+#### Advanced Options
+
+Skip the questions and configure everything with flags:
+
+<CodeBlock code={`# Use a specific base color
+npx shadcn@latest init --base-color zinc
+
+# Choose a template (for Next.js projects)
+
+npx shadcn@latest init --template next
+
+# Install components during setup
+
+npx shadcn@latest init button card dialog
+
+# Skip all prompts (use defaults)
+
+npx shadcn@latest init --yes
+
+# Use CSS variables (recommended)
+
+npx shadcn@latest init --css-variables
+
+# Don't use CSS variables
+
+npx shadcn@latest init --no-css-variables
+
+# Force overwrite existing config
+
+npx shadcn@latest init --force
+
+# Use src directory structure
+
+npx shadcn@latest init --src-dir
+
+# Run silently (no output)
+
+npx shadcn@latest init --silent`} lang="bash" />
+
+---
+
+### `add` - Install Components
+
+This is the command you'll use most often. It adds components to your project.
+
+#### Basic Usage
+
+<CodeBlock code="npx shadcn@latest add [component-name]" lang="bash" />
+
+#### Examples
+
+<CodeBlock code={`# Add one component
+npx shadcn@latest add @pagekit/button
+
+# Add multiple components at once
+
+npx shadcn@latest add @pagekit/button @pagekit/card @pagekit/dialog
+
+# Add ALL available components (careful, this is a lot!)
+
+npx shadcn@latest add --all`} lang="bash" />
+
+#### What Happens
+
+When you run this command:
+
+1. Downloads the component source code from the registry
+2. Installs any required npm packages the component needs
+3. Copies the component to your `components/` folder
+4. Sets up imports and utilities automatically
+
+#### Useful Options
+
+<CodeBlock code={`# Overwrite an existing component (to update it)
+npx shadcn@latest add @pagekit/button --overwrite
+
+# Skip confirmation prompts
+
+npx shadcn@latest add @pagekit/button --yes
+
+# Install to a custom path
+
+npx shadcn@latest add @pagekit/button --path src/my-components`} lang="bash" />
+
+> **Pro Tip:** After adding a component, you can modify it however you want! The code is in your project, not locked away in node_modules.
+
+---
+
+### `view` - Preview Before Installing
+
+Want to see what a component looks like before adding it? Use `view`.
+
+#### Basic Usage
+
+<CodeBlock code="npx shadcn@latest view [component-name]" lang="bash" />
+
+#### Examples
+
+<CodeBlock code={`# View a single component
+npx shadcn@latest view @pagekit/button
+
+# View multiple components
+
+npx shadcn@latest view @pagekit/button @pagekit/card`} lang="bash" />
+
+#### What You'll See
+
+- Component source code
+- List of dependencies
+- Usage examples
+- Style information
+
+> **When to use this:** Great for exploring components or checking what will be installed before adding it to your project.
+
+---
+
+### `search` - Find Components
+
+Can't remember the exact component name? Use search to find it.
+
+#### Basic Usage
+
+<CodeBlock code="npx shadcn@latest search [registry]" lang="bash" />
+
+#### Examples
+
+<CodeBlock code={`# Search the PageKit registry
+npx shadcn@latest search @pagekit
+
+# Search multiple registries
+
+npx shadcn@latest search @pagekit @another-registry`} lang="bash" />
+
+#### What It Does
+
+Shows you all available components that match your search, including:
+
+- Component names
+- Descriptions
+- Registry source
+
+> **Tip:** Use this when you're exploring what components are available or trying to find something specific.
+
+---
+
+### `list` - See Everything Available
+
+Want to see all components from a registry? Use `list`.
+
+#### Basic Usage
+
+<CodeBlock code="npx shadcn@latest list [registry]" lang="bash" />
+
+#### Example
+
+<CodeBlock code="npx shadcn@latest list @pagekit" lang="bash" />
+
+#### What You Get
+
+A complete list of all components in the registry, organized by category:
+
+- UI Components (buttons, cards, dialogs, etc.)
+- Form Components (inputs, selects, checkboxes, etc.)
+- Layout Components (containers, grids, etc.)
+- And more...
+
+> **When to use this:** Perfect for getting an overview of everything available in a registry.
+
+---
+
+## Quick Start Guide
+
+New to shadcn? Follow these 3 simple steps:
+
+### Step 1: Initialize Your Project
+
+<CodeBlock code="npx shadcn@latest init" lang="bash" />
+
+Answer the prompts or use `--yes` to accept defaults.
+
+### Step 2: Add Your First Component
+
+<CodeBlock code="npx shadcn@latest add @pagekit/button" lang="bash" />
+
+### Step 3: Use It in Your Code
+
+<CodeBlock code={`import { Button } from "@/components/ui/button";
+
+export default function MyApp() {
+  return <Button>Click me!</Button>;
+}`} lang="tsx" />
+
+That's it!
+
+---
+
+## Common Workflows
+
+### Starting a New Project
+
+<CodeBlock code={`# 1. Initialize with defaults
+npx shadcn@latest init --yes
+
+# 2. Add common components
+
+npx shadcn@latest add @pagekit/button @pagekit/card @pagekit/input
+
+# 3. Start building!`} lang="bash" />
+
+### Exploring Components
+
+<CodeBlock code={`# 1. See what's available
+npx shadcn@latest list @pagekit
+
+# 2. Preview a component
+
+npx shadcn@latest view @pagekit/button
+
+# 3. Add it if you like it
+
+npx shadcn@latest add @pagekit/button`} lang="bash" />
+
+### Updating Components
+
+<CodeBlock
+  code="npx shadcn@latest add @pagekit/button --overwrite"
+  lang="bash"
+/>
+
+---
+
+## Frequently Asked Questions
+
+### Do I need to install the CLI?
+
+**No!** Just use `npx shadcn@latest` and it will run the latest version automatically.
+
+### Where do components get installed?
+
+By default, components go to `components/ui/` (or `src/components/ui/` if using `--src-dir`).
+
+### Can I modify the components?
+
+**Yes!** That's the whole point. The code is copied to your project, so customize away.
+
+### What if I already have a component with the same name?
+
+The CLI will ask before overwriting. Use `--overwrite` to force update, or `--path` to install to a different location.
+
+### Do I need to configure Tailwind?
+
+The `init` command handles most of the Tailwind setup for you. Just make sure Tailwind is installed in your project first.
+
+### Can I use this with Next.js? Vite? Remix?
+
+**Yes!** The CLI works with any React framework. Use `--template next` for Next.js-specific setup.
+
+---
+
+## Pro Tips
+
+**Use CSS Variables** - They make theming much easier. Enable with `--css-variables` (it's on by default).
+
+**Check Before Adding** - Use `view` to preview components before installing them.
+
+**Keep Components Updated** - Check the registry periodically for updates and re-add with `--overwrite`.
+
+**Customize Freely** - Remember, you own this code! Modify components to fit your exact needs.
+
+**Version Control** - Commit your `components.json` file so your team uses the same configuration.
+
+---
+
+## Troubleshooting
+
+### Command not found
+
+Make sure you're using `npx shadcn@latest`, not just `shadcn`.
+
+### Import errors after adding components
+
+Check that your `tsconfig.json` has the path aliases configured (the `init` command should handle this).
+
+### Styles not working
+
+1. Make sure Tailwind is installed: `npm install tailwindcss`
+2. Check that your global CSS file imports Tailwind
+3. Verify `components.json` paths are correct
+
+### Components look different than expected
+
+If you used `--no-css-variables`, components use direct Tailwind classes instead of theme variables. Re-run `init` with `--css-variables` for better theming support.
+
+Happy building!

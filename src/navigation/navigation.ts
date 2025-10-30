@@ -14,6 +14,7 @@ export const navigation: NavigationItem[] = [
     children: [
       { label: "Introduction", href: "/docs" },
       { label: "Installation", href: "/docs/installation" },
+      { label: "CLI Guide", href: "/docs/cli-guide" },
       { label: "Components", href: "/docs/components" }
     ],
   },
