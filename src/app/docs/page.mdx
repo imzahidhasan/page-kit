@@ -1,3 +1,5 @@
+import { CodeBlock } from "@/components/site/code-block";
+
 ## Introduction
 
 Welcome to **Page Kit** – an open-source collection of beautiful React components built with modern web technologies.
@@ -9,7 +11,7 @@ Page Kit helps you build professional websites faster by providing ready-to-use,
 ## Key Features
 
 - **Modern Stack**: Built with Next.js 15, React 19, Tailwind CSS 4, and Motion
-- **Copy & Paste**: Simply copy the components you need – no installation required
+- **CLI-Powered**: Use the CLI to add components with automatic setup and dependencies
 - **Fully Customizable**: Easy to modify and adapt to your design
 - **Dark Mode**: Built-in theme switching support
 - **Responsive**: Works beautifully on all devices
@@ -20,15 +22,27 @@ Page Kit helps you build professional websites faster by providing ready-to-use,
 
 Get started in three simple steps:
 
-1. Browse the component library
-2. Copy the component code
-3. Paste into your project
+1. **Initialize your project**
 
-That's it! No complex setup, no heavy dependencies.
+<CodeBlock code="npx shadcn@latest init" lang="bash" />
+
+2. **Add components using the CLI**
+
+<CodeBlock code="npx shadcn@latest add @pagekit/button" lang="bash" />
+
+3. **Use in your code**
+
+<CodeBlock code={`import { Button } from "@/components/ui/button";
+
+export default function MyApp() {
+  return <Button>Click me!</Button>;
+}`} lang="tsx" />
+
+That's it! The CLI handles dependencies and setup automatically.
 
 ## Contributing
 
-Page Kit is open-source and welcomes contributions from developers of all skill levels. Check out our [Contributing Guide](../../../CONTRIBUTING.md) to get started.
+Page Kit is open-source and welcomes contributions from developers of all skill levels. Check out our <a href="https://github.com/imzahidhasan/page-kit?tab=contributing-ov-file" target="_blank" rel="noopener noreferrer">Contributing Guide</a> to get started.
 
 ---
 
