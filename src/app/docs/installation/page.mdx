@@ -1,176 +1,234 @@
-# Installation
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/site/tabs";
 
-Getting started with **Page Kit** is simple. You don't need to install anything—just add component using cli or copy the component code you want and use it in your project. Here's how to set up your environment and start using Page Kit:
+## Installation
 
----
+PageKit leverages the **ShadCN CLI (v3)** for seamless component integration. This means you can add beautiful, production-ready components to your project without worrying about complex installations or dependency conflicts.
 
-## 1. Set Up Your React Project
+Follow the step-by-step guide below to get started with PageKit in your preferred framework.
 
-You can use any React-based framework. Choose one of the options below:
+<Tabs defaultValue="nextjs">
+  <TabsList>
+    <TabsTrigger value="nextjs">Next.js</TabsTrigger>
+    <TabsTrigger value="react">React</TabsTrigger>
+  </TabsList>
 
-### Option A: Next.js (App Router)
+  <TabsContent value="nextjs">
+    <div className="space-y-4 p-4">
+      <p className="text-muted-foreground">
+        Get PageKit up and running in your Next.js project in just a few minutes. Next.js comes with built-in support for Tailwind CSS, making the setup process smooth and straightforward.
+      </p>
 
-#### Create a Next.js App
+      <div>
+        <h4 className="font-medium mb-2">
+          1. Create a new Next.js project with Tailwind CSS
+        </h4>
+        <p className="text-sm text-muted-foreground mb-3">
+          Run the following command to create a new Next.js project. The interactive CLI will guide you through the setup process.
+        </p>
 
-<CodeBlock code={`npx create-next-app@latest`} lang="bash" />
+```bash
+npx create-next-app@latest your-project-name
+cd your-project-name
+```
 
-Follow the prompts to set up your project with the following options:
+        <p className="text-sm text-muted-foreground mt-3">
+          <strong>Important:</strong> When prompted during installation, make sure to select:
+        </p>
+        <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1 mt-2">
+          <li>✅ TypeScript - For type safety and better developer experience</li>
+          <li>✅ Tailwind CSS - Required for PageKit styling</li>
+          <li>✅ App Router - Recommended for modern Next.js features</li>
+        </ul>
+      </div>
 
-- When asked about TypeScript, select **Yes** or **No** based on your preference
-- When asked about Tailwind CSS, select **Yes** (this will install and configure Tailwind for you)
-- For the App Router, select **Yes**
+      <div>
+        <h4 className="font-medium mb-2">2. Initialize ShadCN in your project</h4>
+        <p className="text-sm text-muted-foreground mb-3">
+          ShadCN CLI will set up the necessary configuration files and folder structure for managing your components. This is a one-time setup process.
+        </p>
 
-#### Start Your App
+```bash
+npx shadcn@latest init
+```
 
-<CodeBlock
-  code={`
-cd my-app
-npm run dev
-`}
-  lang="bash"
-/>
+        <p className="text-sm text-muted-foreground mt-3">
+          Follow the prompts to configure your project. The defaults work great for most projects.
+        </p>
+      </div>
 
-### Option B: Vite
+      <div>
+        <h4 className="font-medium mb-2">
+          3. Add PageKit registry to your configuration
+        </h4>
+        <p className="text-sm text-muted-foreground mb-3">
+          After initialization, you'll find a <code className="text-xs bg-muted px-1 py-0.5 rounded">components.json</code> file in your project root. Open it and add the PageKit registry to the <code className="text-xs bg-muted px-1 py-0.5 rounded">registries</code> section:
+        </p>
 
-#### Create a Vite App
-
-<CodeBlock code={`npm create vite@latest`} lang="bash" />
-
-Follow the prompts to set up your project with the following options:
-
-<CodeBlock
-  code={`│
-◇  Project name:
-│  my-app
-│
-◇  Select a framework:
-│  React
-│
-◇  Select a variant:
-│  TypeScript or JavaScript`}
-
-lang="bash"
-/>
-
-#### Navigate to your project and install dependencies
-
-<CodeBlock
-  code={`
-cd my-app
-npm install
-`}
-  lang="bash"
-/>
-
-#### Start Your App
-
-<CodeBlock code={`npm run dev`} lang="bash" />
-
----
-
-## 2. Add Tailwind CSS
-
-Page Kit components are built with Tailwind CSS. You'll need to add Tailwind to your project if it's not already included.
-
-### For Next.js
-
-If you selected Tailwind CSS during Next.js setup, it's already configured. Otherwise:
-
-<CodeBlock
-  code={`
-npm install tailwindcss @tailwindcss/postcss postcss
-`}
-  lang="bash"
-/>
-
-Configure **`postcss.config.mjs`** file to include the Tailwind CSS plugin:
-
-<CodeBlock code={`
-const config = {
-  plugins: {
-    "@tailwindcss/postcss": {},
-  },
-};
-
-export default config;
-      `}
-    / >
-
-Add Tailwind CSS to **`app/globals.css`** as shown below.:
-
-<CodeBlock
-  code={`
-@import "tailwindcss";
-      `}
-  lang="css"
-/>
-
-That's it! Tailwind CSS is now set up in your Next.js project.
-
-### For Vite
-
-<CodeBlock
-  code={`
-npm install tailwindcss @tailwindcss/vite
-`}
-  lang="bash"
-/>
-
-Edit your **`vite.config.ts`**:
-
-<CodeBlock
-      code={`
-import { defineConfig } from 'vite'
-import tailwindcss from '@tailwindcss/vite'
-
-export default defineConfig({
-  plugins: [
-    tailwindcss(),
-  ],
-})}
-`}
-  lang="javascript"
-/>
-
-Add Tailwind CSS to **`app/globals.css`** as shown below.:
-
-<CodeBlock
-  code={`
-@import "tailwindcss";
-      `}
-  lang="css"
-/>
-
-
----
-
-## 3. Copy Page Kit Components
-
-Browse the Page Kit documentation and copy the JSX/TSX code for the component you want (e.g., Button, Input, Card).
-
-Paste the code into your project's components folder.
-
-You can customize the styles and props as needed.
-
----
-
-## 4. Use the Component
-
-Import the component into your pages or other components and start using it right away:
-
-<CodeBlock
-      code={`
-import { Button } from "./components/ui/button";
-
-export default function Home() {
-  return <Button>Click Me</Button>;
+```json
+{
+  "registries": {
+    "@pagekit": "https://page-kit.vercel.app/r/{name}.json"
+  }
 }
-  `}
-  language="tsx"
-/>
+```
 
----
+        <p className="text-sm text-muted-foreground mt-3">
+          This tells ShadCN where to find PageKit components when you want to add them to your project.
+        </p>
+      </div>
 
-## Done
+      <div>
+        <h4 className="font-medium mb-2">
+          4. Add PageKit components to your project
+        </h4>
+        <p className="text-sm text-muted-foreground mb-3">
+          Now you're ready to add PageKit components! Use the <code className="text-xs bg-muted px-1 py-0.5 rounded">@pagekit</code> prefix to add any component. For example, to add a button:
+        </p>
 
-You're ready to build beautiful, modern UIs with **Page Kit**. No installation required—just copy, paste, and start building!
+```bash
+npx shadcn@latest add @pagekit/button
+```
+
+        <p className="text-sm text-muted-foreground mt-3">
+          The component will be automatically added to your <code className="text-xs bg-muted px-1 py-0.5 rounded">components/ui</code> folder, ready to use in your application. You can then import and use it like any other React component.
+        </p>
+      </div>
+
+      <div className="mt-6 p-4 bg-muted/50 rounded-lg">
+        <h5 className="font-medium mb-2">🎉 You're all set!</h5>
+        <p className="text-sm text-muted-foreground">
+          Start exploring the available components in the documentation and add them to your project as needed. Each component is independent, so you only install what you use.
+        </p>
+      </div>
+    </div>
+
+  </TabsContent>
+
+  <TabsContent value="react">
+    <div className="space-y-4 p-4">
+      <p className="text-muted-foreground">
+        Setting up PageKit in a React project with Vite is straightforward. Vite provides a fast development experience, and with a few setup steps, you'll have PageKit components ready to use.
+      </p>
+
+      <div>
+        <h4 className="font-medium mb-2">1. Create a new Vite project</h4>
+        <p className="text-sm text-muted-foreground mb-3">
+          Start by creating a new Vite project with the React TypeScript template. This gives you a modern React setup with hot module replacement and TypeScript support.
+        </p>
+
+```bash
+npm create vite@latest your-project-name -- --template react-ts
+cd your-project-name
+npm install
+```
+
+      </div>
+
+      <div>
+        <h4 className="font-medium mb-2">
+          2. Install and configure Tailwind CSS
+        </h4>
+        <p className="text-sm text-muted-foreground mb-3">
+          Unlike Next.js, Vite doesn't come with Tailwind CSS pre-configured. Install Tailwind CSS and its dependencies, then initialize the configuration:
+        </p>
+
+```bash
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+        <p className="text-sm text-muted-foreground mt-3">
+          This creates <code className="text-xs bg-muted px-1 py-0.5 rounded">tailwind.config.js</code> and <code className="text-xs bg-muted px-1 py-0.5 rounded">postcss.config.js</code> files. Next, update your <code className="text-xs bg-muted px-1 py-0.5 rounded">tailwind.config.js</code> to include your source files:
+        </p>
+
+```js
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+        <p className="text-sm text-muted-foreground mt-3">
+          Then add Tailwind directives to your <code className="text-xs bg-muted px-1 py-0.5 rounded">src/index.css</code> file:
+        </p>
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+      </div>
+
+      <div>
+        <h4 className="font-medium mb-2">3. Initialize ShadCN in your project</h4>
+        <p className="text-sm text-muted-foreground mb-3">
+          Run the ShadCN initialization command. This sets up the necessary configuration and creates the component structure:
+        </p>
+
+```bash
+npx shadcn@latest init
+```
+
+        <p className="text-sm text-muted-foreground mt-3">
+          When prompted, configure the path aliases and choose your preferred styling options. The CLI will guide you through the setup.
+        </p>
+      </div>
+
+      <div>
+        <h4 className="font-medium mb-2">
+          4. Add PageKit registry to your configuration
+        </h4>
+        <p className="text-sm text-muted-foreground mb-3">
+          Open the <code className="text-xs bg-muted px-1 py-0.5 rounded">components.json</code> file created by ShadCN and add the PageKit registry:
+        </p>
+
+```json
+{
+  "registries": {
+    "@pagekit": "https://page-kit.vercel.app/r/{name}.json"
+  }
+}
+```
+
+        <p className="text-sm text-muted-foreground mt-3">
+          This enables you to install PageKit components using the <code className="text-xs bg-muted px-1 py-0.5 rounded">@pagekit</code> prefix.
+        </p>
+      </div>
+
+      <div>
+        <h4 className="font-medium mb-2">
+          5. Add PageKit components to your project
+        </h4>
+        <p className="text-sm text-muted-foreground mb-3">
+          You're now ready to add PageKit components! Install any component you need with a simple command:
+        </p>
+
+```bash
+npx shadcn@latest add @pagekit/button
+```
+
+        <p className="text-sm text-muted-foreground mt-3">
+          Components will be added to your <code className="text-xs bg-muted px-1 py-0.5 rounded">src/components/ui</code> folder and are ready to import and use in your React components.
+        </p>
+      </div>
+
+      <div className="mt-6 p-4 bg-muted/50 rounded-lg">
+        <h5 className="font-medium mb-2">🎉 You're all set!</h5>
+        <p className="text-sm text-muted-foreground">
+          Your React + Vite project is now configured with PageKit. Browse the component library and add the components you need. Each component is self-contained and tree-shakeable.
+        </p>
+      </div>
+    </div>
+
+  </TabsContent>
+</Tabs>
