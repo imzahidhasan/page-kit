@@ -1,0 +1,471 @@
+import { CodeBlock } from "@/components/site/code-block";
+import * as Accordion from "@radix-ui/react-accordion";
+import { ChevronDown } from "lucide-react";
+
+# CLI Guide
+
+The shadcn CLI is a powerful command-line tool that makes it easy to add and manage components in your project.
+
+**Key difference:** Unlike traditional npm packages, shadcn doesn't install as a dependency. Instead, it **copies the component code directly into your project**, giving you complete control to modify and customize it however you want.
+
+## Why Use the CLI?
+
+- **Quick Setup** - Get started in seconds
+- **Own Your Code** - Components are copied to your project, not hidden in node_modules
+- **Full Customization** - Modify components freely to match your needs
+- **Automatic Configuration** - Handles dependencies and setup for you
+- **Easy Discovery** - Search, view, and explore components before installing
+
+## Getting Started
+
+No installation needed! Use `npx` to run commands directly:
+
+<CodeBlock code="npx shadcn@latest init" lang="bash" />
+
+> **Tip:** You can install it globally if you prefer: `npm install -g shadcn@latest`
+
+## Commands
+
+### `init` - Set Up Your Project
+
+The first command you'll run. It configures your project to work with shadcn components.
+
+#### Basic Usage
+
+<CodeBlock code="npx shadcn@latest init" lang="bash" />
+
+When you run this, you'll be asked a few simple questions:
+
+<CodeBlock
+  code={`Which style would you like to use? › New York
+Which color would you like to use as base color? › Zinc
+Do you want to use CSS variables for colors? › yes / no`}
+  lang="bash"
+/>
+
+#### What Happens Behind the Scenes
+
+Creates a `components.json` file (your configuration)  
+Installs necessary packages (tailwindcss, clsx, etc.)  
+Sets up your theme colors  
+Configures import paths (so you can use `@/components`)
+
+#### Advanced Options
+
+Skip the questions and configure everything with flags:
+
+<CodeBlock code={`# Use a specific base color
+npx shadcn@latest init --base-color zinc
+
+# Choose a template (for Next.js projects)
+
+npx shadcn@latest init --template next
+
+# Install components during setup
+
+npx shadcn@latest init button card dialog
+
+# Skip all prompts (use defaults)
+
+npx shadcn@latest init --yes
+
+# Use CSS variables (recommended)
+
+npx shadcn@latest init --css-variables
+
+# Don't use CSS variables
+
+npx shadcn@latest init --no-css-variables
+
+# Force overwrite existing config
+
+npx shadcn@latest init --force
+
+# Use src directory structure
+
+npx shadcn@latest init --src-dir
+
+# Run silently (no output)
+
+npx shadcn@latest init --silent`} lang="bash" />
+
+
+
+### `add` - Install Components
+
+This is the command you'll use most often. It adds components to your project.
+
+#### Basic Usage
+
+<CodeBlock code="npx shadcn@latest add [component-name]" lang="bash" />
+
+#### Examples
+
+<CodeBlock code={`# Add one component
+npx shadcn@latest add @pagekit/button
+
+# Add multiple components at once
+
+npx shadcn@latest add @pagekit/button @pagekit/card @pagekit/dialog
+
+# Add ALL available components (careful, this is a lot!)
+
+npx shadcn@latest add --all`} lang="bash" />
+
+#### What Happens
+
+When you run this command:
+
+1. Downloads the component source code from the registry
+2. Installs any required npm packages the component needs
+3. Copies the component to your `components/` folder
+4. Sets up imports and utilities automatically
+
+#### Useful Options
+
+<CodeBlock code={`# Overwrite an existing component (to update it)
+npx shadcn@latest add @pagekit/button --overwrite
+
+# Skip confirmation prompts
+
+npx shadcn@latest add @pagekit/button --yes
+
+# Install to a custom path
+
+npx shadcn@latest add @pagekit/button --path src/my-components`} lang="bash" />
+
+> **Pro Tip:** After adding a component, you can modify it however you want! The code is in your project, not locked away in node_modules.
+
+
+
+### `view` - Preview Before Installing
+
+Want to see what a component looks like before adding it? Use `view`.
+
+#### Basic Usage
+
+<CodeBlock code="npx shadcn@latest view [component-name]" lang="bash" />
+
+#### Examples
+
+<CodeBlock code={`# View a single component
+npx shadcn@latest view @pagekit/button
+
+# View multiple components
+
+npx shadcn@latest view @pagekit/button @pagekit/card`} lang="bash" />
+
+#### What You'll See
+
+- Component source code
+- List of dependencies
+- Usage examples
+- Style information
+
+> **When to use this:** Great for exploring components or checking what will be installed before adding it to your project.
+
+
+### `search` - Find Components
+
+Can't remember the exact component name? Use search to find it.
+
+#### Basic Usage
+
+<CodeBlock code="npx shadcn@latest search [registry]" lang="bash" />
+
+#### Examples
+
+<CodeBlock code={`# Search the PageKit registry
+npx shadcn@latest search @pagekit
+
+# Search multiple registries
+
+npx shadcn@latest search @pagekit @another-registry`} lang="bash" />
+
+#### What It Does
+
+Shows you all available components that match your search, including:
+
+- Component names
+- Descriptions
+- Registry source
+
+> **Tip:** Use this when you're exploring what components are available or trying to find something specific.
+
+
+### `list` - See Everything Available
+
+Want to see all components from a registry? Use `list`.
+
+#### Basic Usage
+
+<CodeBlock code="npx shadcn@latest list [registry]" lang="bash" />
+
+#### Example
+
+<CodeBlock code="npx shadcn@latest list @pagekit" lang="bash" />
+
+#### What You Get
+
+A complete list of all components in the registry, organized by category:
+
+- UI Components (buttons, cards, dialogs, etc.)
+- Form Components (inputs, selects, checkboxes, etc.)
+- Layout Components (containers, grids, etc.)
+- And more...
+
+> **When to use this:** Perfect for getting an overview of everything available in a registry.
+
+
+
+## Quick Start Guide
+
+New to shadcn? Follow these 3 simple steps:
+
+### Step 1: Initialize Your Project
+
+<CodeBlock code="npx shadcn@latest init" lang="bash" />
+
+Answer the prompts or use `--yes` to accept defaults.
+
+### Step 2: Add Your First Component
+
+<CodeBlock code="npx shadcn@latest add @pagekit/button" lang="bash" />
+
+### Step 3: Use It in Your Code
+
+<CodeBlock code={`import { Button } from "@/components/ui/button";
+
+export default function MyApp() {
+  return <Button>Click me!</Button>;
+}`} lang="tsx" />
+
+That's it!
+
+## Common Workflows
+
+### Starting a New Project
+
+<CodeBlock code={`# 1. Initialize with defaults
+npx shadcn@latest init --yes
+
+# 2. Add common components
+
+npx shadcn@latest add @pagekit/button @pagekit/card @pagekit/input
+
+# 3. Start building!`} lang="bash" />
+
+### Exploring Components
+
+<CodeBlock code={`# 1. See what's available
+npx shadcn@latest list @pagekit
+
+# 2. Preview a component
+
+npx shadcn@latest view @pagekit/button
+
+# 3. Add it if you like it
+
+npx shadcn@latest add @pagekit/button`} lang="bash" />
+
+### Updating Components
+
+<CodeBlock
+  code="npx shadcn@latest add @pagekit/button --overwrite"
+  lang="bash"
+/>
+
+
+
+<h2 className="text-center">Frequently Asked Questions</h2>
+
+<div className=" space-y-1 rounded-xl border bg-gradient-to-b from-background to-muted/20 p-1">
+  <Accordion.Root type="single" collapsible className="w-full">
+    <Accordion.Item value="item-1" className="border-b border-border/40 last:border-0">
+      <Accordion.Header>
+        <Accordion.Trigger className="flex w-full items-center justify-between px-6 py-2 text-left font-medium transition-all hover:bg-muted/50 rounded-lg group">
+          <span className="text-base">Do I need to install the CLI?</span>
+          <ChevronDown className="h-4 w-4 text-muted-foreground transition-all duration-300 group-data-[state=open]:rotate-180 group-data-[state=open]:text-foreground" />
+        </Accordion.Trigger>
+      </Accordion.Header>
+      <Accordion.Content className="px-6 pb-4 text-sm leading-relaxed text-muted-foreground overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+        <strong className="text-foreground">No!</strong> Just use <code className="px-2 py-0.5 rounded-md bg-muted font-mono text-xs">npx shadcn@latest</code> and it will run the latest version automatically.
+      </Accordion.Content>
+    </Accordion.Item>
+
+    <Accordion.Item value="item-2" className="border-b border-border/40 last:border-0">
+      <Accordion.Header>
+        <Accordion.Trigger className="flex w-full items-center justify-between px-6 py-2 text-left font-medium transition-all hover:bg-muted/50 rounded-lg group">
+          <span className="text-base">Where do components get installed?</span>
+          <ChevronDown className="h-4 w-4 text-muted-foreground transition-all duration-300 group-data-[state=open]:rotate-180 group-data-[state=open]:text-foreground" />
+        </Accordion.Trigger>
+      </Accordion.Header>
+      <Accordion.Content className="px-6 pb-4 text-sm leading-relaxed text-muted-foreground overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+        By default, components go to <code className="px-2 py-0.5 rounded-md bg-muted font-mono text-xs">components/ui/</code> (or <code className="px-2 py-0.5 rounded-md bg-muted font-mono text-xs">src/components/ui/</code> if using <code className="px-2 py-0.5 rounded-md bg-muted font-mono text-xs">--src-dir</code>).
+      </Accordion.Content>
+    </Accordion.Item>
+
+    <Accordion.Item value="item-3" className="border-b border-border/40 last:border-0">
+      <Accordion.Header>
+        <Accordion.Trigger className="flex w-full items-center justify-between px-6 py-2 text-left font-medium transition-all hover:bg-muted/50 rounded-lg group">
+          <span className="text-base">Can I modify the components?</span>
+          <ChevronDown className="h-4 w-4 text-muted-foreground transition-all duration-300 group-data-[state=open]:rotate-180 group-data-[state=open]:text-foreground" />
+        </Accordion.Trigger>
+      </Accordion.Header>
+      <Accordion.Content className="px-6 pb-4 text-sm leading-relaxed text-muted-foreground overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+        <strong className="text-foreground">Yes!</strong> That's the whole point. The code is copied to your project, so customize away.
+      </Accordion.Content>
+    </Accordion.Item>
+
+    <Accordion.Item value="item-4" className="border-b border-border/40 last:border-0">
+      <Accordion.Header>
+        <Accordion.Trigger className="flex w-full items-center justify-between px-6 py-2 text-left font-medium transition-all hover:bg-muted/50 rounded-lg group">
+          <span className="text-base">What if I already have a component with the same name?</span>
+          <ChevronDown className="h-4 w-4 text-muted-foreground transition-all duration-300 group-data-[state=open]:rotate-180 group-data-[state=open]:text-foreground" />
+        </Accordion.Trigger>
+      </Accordion.Header>
+      <Accordion.Content className="px-6 pb-4 text-sm leading-relaxed text-muted-foreground overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+        The CLI will ask before overwriting. Use <code className="px-2 py-0.5 rounded-md bg-muted font-mono text-xs">--overwrite</code> to force update, or <code className="px-2 py-0.5 rounded-md bg-muted font-mono text-xs">--path</code> to install to a different location.
+      </Accordion.Content>
+    </Accordion.Item>
+
+    <Accordion.Item value="item-5" className="border-b border-border/40 last:border-0">
+      <Accordion.Header>
+        <Accordion.Trigger className="flex w-full items-center justify-between px-6 py-2 text-left font-medium transition-all hover:bg-muted/50 rounded-lg group">
+          <span className="text-base">Do I need to configure Tailwind?</span>
+          <ChevronDown className="h-4 w-4 text-muted-foreground transition-all duration-300 group-data-[state=open]:rotate-180 group-data-[state=open]:text-foreground" />
+        </Accordion.Trigger>
+      </Accordion.Header>
+      <Accordion.Content className="px-6 pb-4 text-sm leading-relaxed text-muted-foreground overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+        The <code className="px-2 py-0.5 rounded-md bg-muted font-mono text-xs">init</code> command handles most of the Tailwind setup for you. Just make sure Tailwind is installed in your project first.
+      </Accordion.Content>
+    </Accordion.Item>
+
+    <Accordion.Item value="item-6" className="border-b border-border/40 last:border-0">
+      <Accordion.Header>
+        <Accordion.Trigger className="flex w-full items-center justify-between px-6 py-2 text-left font-medium transition-all hover:bg-muted/50 rounded-lg group">
+          <span className="text-base">Can I use this with Next.js? Vite? Remix?</span>
+          <ChevronDown className="h-4 w-4 text-muted-foreground transition-all duration-300 group-data-[state=open]:rotate-180 group-data-[state=open]:text-foreground" />
+        </Accordion.Trigger>
+      </Accordion.Header>
+      <Accordion.Content className="px-6 pb-4 text-sm leading-relaxed text-muted-foreground overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+        <strong className="text-foreground">Yes!</strong> The CLI works with any React framework. Use <code className="px-2 py-0.5 rounded-md bg-muted font-mono text-xs">--template next</code> for Next.js-specific setup.
+      </Accordion.Content>
+    </Accordion.Item>
+
+  </Accordion.Root>
+</div>
+
+<h2 className="text-center mb-6">Pro Tips</h2>
+
+<div className="grid gap-4 md:grid-cols-2">
+  <div className="group relative overflow-hidden rounded-lg border bg-card p-5 transition-all hover:shadow-md hover:border-primary/50">
+    <div className="flex items-start gap-3">
+      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+        <span className="text-lg font-bold">1</span>
+      </div>
+      <div>
+        <h3 className="font-semibold mb-1">Use CSS Variables</h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          They make theming much easier. Enable with <code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs">--css-variables</code> (it's on by default).
+        </p>
+      </div>
+    </div>
+  </div>
+
+<div className="group relative overflow-hidden rounded-lg border bg-card p-5 transition-all hover:shadow-md hover:border-primary/50">
+  <div className="flex items-start gap-3">
+    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+      <span className="text-lg font-bold">2</span>
+    </div>
+    <div>
+      <h3 className="font-semibold mb-1">Check Before Adding</h3>
+      <p className="text-sm text-muted-foreground leading-relaxed">Use<code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs">view</code>to preview components before installing them.</p>
+    </div>
+  </div>
+</div>
+
+<div className="group relative overflow-hidden rounded-lg border bg-card p-5 transition-all hover:shadow-md hover:border-primary/50">
+  <div className="flex items-start gap-3">
+    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+      <span className="text-lg font-bold">3</span>
+    </div>
+    <div>
+      <h3 className="font-semibold mb-1">Keep Components Updated</h3>
+      <p className="text-sm text-muted-foreground leading-relaxed">Check the registry periodically for updates and re-add with{" "}<code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs">--overwrite</code>.</p>
+    </div>
+  </div>
+</div>
+
+<div className="group relative overflow-hidden rounded-lg border bg-card p-5 transition-all hover:shadow-md hover:border-primary/50">
+  <div className="flex items-start gap-3">
+    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+      <span className="text-lg font-bold">4</span>
+    </div>
+    <div>
+      <h3 className="font-semibold mb-1">Customize Freely</h3>
+      <p className="text-sm text-muted-foreground leading-relaxed">
+        Remember, you own this code! Modify components to fit your exact needs.
+      </p>
+    </div>
+  </div>
+</div>
+
+  <div className="group relative overflow-hidden rounded-lg border bg-card p-5 transition-all hover:shadow-md hover:border-primary/50 md:col-span-2">
+    <div className="flex items-start gap-3">
+      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+        <span className="text-lg font-bold">5</span>
+      </div>
+      <div>
+        <h3 className="font-semibold mb-1">Version Control</h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Commit your <code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs">components.json</code> file so your team uses the same configuration.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<h2 className="text-center mb-6">Troubleshooting</h2>
+
+<div className="space-y-6 max-w-3xl">
+  <div className="border-l-2 border-muted-foreground/20 pl-4">
+    <h3 className="font-medium mb-1.5">Command not found</h3>
+    <p className="text-sm text-muted-foreground">
+      Make sure you're using <code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs">npx shadcn@latest</code>, not just <code className="px-1.5 py-0.5 rounded bg-muted font-mon text-xs">shadcn</code>.
+    </p>
+  </div>
+
+<div className="border-l-2 border-muted-foreground/20 pl-4">
+  <h3 className="font-medium mb-1.5">Import errors after adding components</h3>
+  <p className="text-sm text-muted-foreground">
+    Check that your <code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs">tsconfig.json</code>
+    has the path aliases configured (the <code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs"> init</code>
+    command should handle this).
+  </p>
+</div>
+
+<div className="border-l-2 border-muted-foreground/20 pl-4">
+  <h3 className="font-medium mb-1.5">Styles not working</h3>
+  <div className="text-sm text-muted-foreground space-y-1">
+    <p>1.Make sure Tailwind is installed:<code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs">npm install tailwindcss</code> </p>
+    <p>2. Check that your global CSS file imports Tailwind</p>
+    <p>3. Verify<code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs">components.json</code>paths are correct</p>
+  </div>
+</div>
+
+  <div className="border-l-2 border-muted-foreground/20 pl-4">
+    <h3 className="font-medium mb-1.5">Components look different than expected</h3>
+    <p className="text-sm text-muted-foreground">
+      If you used <code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs">--no-css-variables</code>, components use direct Tailwind classes instead of theme variables. Re-run <code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs">init</code> with <code className="px-1.5 py-0.5 rounded bg-muted font-mono text-xs">--css-variables</code> for better theming support.
+    </p>
+  </div>
+</div>
+
+<div className="mt-12 text-center">
+  <p className="text-lg font-medium text-muted-foreground">
+    Happy building! 🚀
+  </p>
+</div>
