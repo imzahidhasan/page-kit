@@ -1,0 +1,265 @@
+import { ComponentRenderer } from "@/components/site/component-renderer";
+import { CodeBlock } from "@/components/site/code-block";
+import { PropsTable } from "@/components/site/props-table";
+import { Cli } from "@/components/site/cli";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/site/tabs";
+import ButtonDefault from "./_components/button-default";
+import ButtonVariants from "./_components/button-variants";
+import ButtonSizes from "./_components/button-sizes";
+import ButtonWithIcon from "./_components/button-with-icon";
+import ButtonIcon from "./_components/button-icon";
+import ButtonDisabled from "./_components/button-disabled";
+import ButtonAsChild from "./_components/button-as-child";
+import CustomLink from "./_components/custom-link";
+
+# Button
+
+A customizable button component with multiple variants, sizes, and states.
+
+## Installation
+
+<Cli command=" add @pagekit/button" />
+
+## Usage
+
+### Default
+
+The default button style with primary colors.
+
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ComponentRenderer component={<ButtonDefault />} />
+  </TabsContent>
+  <TabsContent value="code">
+    <CodeBlock filePath="src/app/docs/button/_components/button-default.tsx" />
+  </TabsContent>
+</Tabs>
+
+## Variants
+
+The button component comes with multiple style variants to suit different use cases.
+
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ComponentRenderer component={<ButtonVariants />} />
+  </TabsContent>
+  <TabsContent value="code">
+    <CodeBlock filePath="src/app/docs/button/_components/button-variants.tsx" />
+  </TabsContent>
+</Tabs>
+
+### Available Variants
+
+- **default** - Primary button with brand colors and shadow
+- **destructive** - Red/danger button for destructive actions
+- **outline** - Bordered button with transparent background
+- **secondary** - Alternative style with secondary colors
+- **ghost** - Minimal button that shows background on hover
+- **link** - Styled as an underlined link
+
+## Sizes
+
+Three different size options are available.
+
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ComponentRenderer component={<ButtonSizes />} />
+  </TabsContent>
+  <TabsContent value="code">
+    <CodeBlock filePath="src/app/docs/button/_components/button-sizes.tsx" />
+  </TabsContent>
+</Tabs>
+
+### Size Specifications
+
+- **sm** - Small button (height: 32px)
+- **default** - Standard button (height: 36px)
+- **lg** - Large button (height: 40px)
+- **icon** - Square button for icons only (36x36px)
+
+## With Icons
+
+Buttons can include icons alongside text. Icons are automatically sized and positioned.
+
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ComponentRenderer component={<ButtonWithIcon />} />
+  </TabsContent>
+  <TabsContent value="code">
+    <CodeBlock filePath="src/app/docs/button/_components/button-with-icon.tsx" />
+  </TabsContent>
+</Tabs>
+
+## Icon Only
+
+Use the `icon` size variant for buttons that only contain an icon.
+
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ComponentRenderer component={<ButtonIcon />} />
+  </TabsContent>
+  <TabsContent value="code">
+    <CodeBlock filePath="src/app/docs/button/_components/button-icon.tsx" />
+  </TabsContent>
+</Tabs>
+
+## Disabled State
+
+Buttons can be disabled to prevent user interaction.
+
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ComponentRenderer component={<ButtonDisabled />} />
+  </TabsContent>
+  <TabsContent value="code">
+    <CodeBlock filePath="src/app/docs/button/_components/button-disabled.tsx" />
+  </TabsContent>
+</Tabs>
+
+## As Child (Polymorphic)
+
+Use the `asChild` prop to render the button as a different element (like a Link) while maintaining button styles.
+
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ComponentRenderer component={<ButtonAsChild />} />
+  </TabsContent>
+  <TabsContent value="code">
+    <CodeBlock filePath="src/app/docs/button/_components/button-as-child.tsx" />
+  </TabsContent>
+</Tabs>
+
+## API Reference
+
+### Props
+
+<PropsTable
+  props={[
+    {
+      name: "variant",
+      type: '"default" | "destructive" | "outline" | "secondary" | "ghost" | "link"',
+      default: '"default"',
+      description: "The visual style variant",
+      required: false,
+    },
+    {
+      name: "size",
+      type: '"default" | "sm" | "lg" | "icon"',
+      default: '"default"',
+      description: "The size of the button",
+      required: false,
+    },
+    {
+      name: "asChild",
+      type: "boolean",
+      default: "false",
+      description: "Render as a child element (polymorphic)",
+      required: false,
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      default: "false",
+      description: "Whether the button is disabled",
+      required: false,
+    },
+    {
+      name: "className",
+      type: "string",
+      default: "-",
+      description: "Additional CSS classes",
+      required: false,
+    },
+  ]}
+/>
+
+### Button Variants Utility
+
+The `buttonVariants` utility is also exported for use with other components:
+
+<CodeBlock code={`import { buttonVariants } from "@/registry/ui/button";
+import Link from "next/link";
+
+export default function CustomLink() {
+  return (
+    <Link 
+      href="/docs" 
+      className={buttonVariants({ variant: "outline", size: "lg" })}
+    >
+      Go to Docs
+    </Link>
+  );
+}`} lang="tsx" />
+
+## Features
+
+- ✅ Multiple style variants (default, destructive, outline, secondary, ghost, link)
+- ✅ Three size options (sm, default, lg) plus icon-only variant
+- ✅ Icon support with automatic sizing
+- ✅ Disabled state handling
+- ✅ Dark mode compatible
+- ✅ Full accessibility support
+- ✅ Polymorphic (can render as different elements)
+- ✅ Keyboard navigation and focus states
+- ✅ TypeScript support
+- ✅ Customizable with className prop
+
+## Accessibility
+
+The button component follows accessibility best practices:
+
+- Proper focus indicators with visible ring
+- Disabled state prevents interaction and shows reduced opacity
+- Support for `aria-invalid` for form validation
+- Semantic `button` element by default
+- Keyboard navigation support (Enter/Space)
+
+## Customization
+
+You can customize the button by passing a `className` prop or by modifying the `buttonVariants` configuration in the component file.
+
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ComponentRenderer component={<CustomLink />} />
+  </TabsContent>
+  <TabsContent value="code">
+    <CodeBlock filePath="src/app/docs/button/_components/custom-link.tsx" />
+  </TabsContent>
+</Tabs>
