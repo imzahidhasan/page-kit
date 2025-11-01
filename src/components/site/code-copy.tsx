@@ -31,7 +31,7 @@ const CodeCopy = ({
       )}
     >
       <div
-        className={`absolute inset-0 transform transition-all duration-300 ${
+        className={` inset-0 transform transition-all duration-300 ${
           copied ? "scale-0 opacity-0" : "scale-100 opacity-100"
         }`}
       >

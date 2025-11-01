@@ -15,9 +15,14 @@ export const navigation: NavigationItem[] = [
       { label: "Introduction", href: "/docs" },
       { label: "Installation", href: "/docs/installation" },
       { label: "CLI Guide", href: "/docs/cli-guide" },
-      { label: "Components", href: "/docs/components" }
     ],
   },
+  {
+    label: "UI Components",
+    children: [
+      { label: "Button", href: "/docs/button" },
+    ]
+  }
   
 ];
 
