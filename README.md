@@ -18,165 +18,375 @@
 
 ## ✨ What is Page Kit?
 
-Page Kit is an open-source toolkit designed to help you build beautiful, modern web pages quickly and easily. Whether you're a beginner or an experienced developer, Page Kit provides everything you need to create professional websites without starting from scratch.
+Page Kit is a comprehensive component registry and UI toolkit that accelerates your web development workflow. Copy production-ready components directly into your project via CLI, customize them to match your brand, and ship faster than ever before.
 
-## 🚀 Features
+**Perfect for:**
 
-- **🎨 Ready-to-Use Components** - Professional React components that work out of the box
-- **⚡ Smooth Animations** - Built with Motion (Framer Motion) for fluid user experiences
-- **🌓 Dark Mode Support** - Built-in theme switching with next-themes
-- **📱 Responsive Design** - Mobile-first approach that works on any device
-- **🔧 Fully Customizable** - Easy to modify and adapt to your brand
-- **📖 MDX Documentation** - Interactive documentation with live examples
-- **🎯 TypeScript Ready** - Full TypeScript support for better developer experience
-- **⚡ Modern Stack** - Built with Next.js 15, React 19, and Tailwind CSS 4
+- 🚀 Startups building MVPs quickly
+- 💼 Agencies delivering client projects on tight deadlines
+- 👨‍💻 Developers who want to focus on logic, not UI boilerplate
+- 🎓 Learners exploring modern React patterns and animations
 
-## 🛠️ Tech Stack
+## 🚀 Key Features
 
-- **Framework**: [Next.js 15](https://nextjs.org/) with Turbopack
-- **React**: [React 19](https://reactjs.org/)
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
-- **Animations**: [Motion](https://motion.dev/) (Framer Motion)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Documentation**: [MDX](https://mdxjs.com/)
-- **UI Primitives**: [Radix UI](https://www.radix-ui.com/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
+### Component Registry System
 
-## 📦 Installation
+- **� CLI-Powered Installation** - Add components to your project with a single command
+- **📦 Modular Architecture** - Install only what you need, keep your bundle size small
+- **🔄 Automatic Dependency Resolution** - Component dependencies are handled automatically
 
-1. Clone the repository:
+### Production-Ready Components
+
+- **🎨 UI Components** - Buttons, inputs, cards, badges, and more
+- **🧱 Block Components** - Pre-built sections like heroes, features, footers, CTAs
+- **🪝 Custom Hooks** - Reusable React hooks for common patterns
+- **🛠️ Utilities** - Helper functions and libraries
+
+### Developer Experience
+
+- **⚡ Smooth Animations** - Every component powered by Motion for fluid interactions
+- **🌓 Theme System** - Built-in dark mode with customizable CSS variables
+- **📱 Responsive by Default** - Mobile-first design that adapts to any screen
+- **🔧 Fully Customizable** - Own the code - modify anything to fit your needs
+- **🎯 TypeScript First** - Full type safety and IntelliSense support
+- **📖 Interactive Docs** - Live component previews with code examples
+
+### Modern Tech Stack
+
+- **⚡ Next.js 15** - Latest App Router with Turbopack for lightning-fast builds
+- **⚛️ React 19** - Cutting-edge React features and performance
+- **🎨 Tailwind CSS 4** - Utility-first styling with CSS-in-JS syntax
+- **✨ Motion** - Powerful animations with a simple API
+
+## 🎯 Use Cases
+
+### � Rapid Prototyping
+
+Build and validate ideas in hours, not days. Perfect for:
+
+- **MVPs & Product Demos** - Ship working prototypes to test market fit
+- **Hackathons** - Stand out with polished UI while focusing on innovation
+- **Client Presentations** - Impress stakeholders with professional interfaces
+
+### 💼 Production Applications
+
+Battle-tested components ready for real-world use:
+
+- **SaaS Dashboards** - Admin panels, analytics views, data tables
+- **Marketing Sites** - Landing pages, product pages, documentation sites
+- **E-commerce** - Product listings, checkout flows, customer portals
+- **Portfolios** - Personal sites, agency showcases, case studies
+
+### 🎓 Learning & Development
+
+Master modern web development patterns:
+
+- **Best Practices** - Learn from production-grade code structure
+- **Animation Techniques** - Explore Motion patterns and animations
+- **TypeScript Patterns** - Study type-safe component architecture
+- **Accessibility** - Understand WCAG-compliant component design
+
+
+## 💡 How It Works
+
+### 1. Browse Components
+
+Explore the interactive documentation at `/docs` to see all available components with live previews, code examples, and customization options.
+
+### 2. Install via CLI
+
+Add components to your project instantly:
 
 ```bash
-git clone https://github.com/imzahidhasan/page-kit.git
-cd page-kit
+npx page-kit add @pagekit/button
+npx page-kit add @pagekit/hero-section
 ```
 
-2. Install dependencies:
+The CLI automatically:
 
-```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-```
+- ✅ Downloads component files to your project
+- ✅ Installs required npm dependencies
+- ✅ Resolves component dependencies
+- ✅ Adds necessary CSS variables
+- ✅ Updates configuration files
 
-3. Start the development server:
+### 3. Customize & Ship
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## 🎯 Quick Start
-
-Page Kit provides a collection of ready-to-use components that you can copy and paste into your project:
-
-### Button Component
+Components are added directly to your codebase - you own them completely:
 
 ```tsx
-import { Button } from "@/components/core/button";
-
-export default function MyPage() {
+// src/components/ui/button.tsx - It's yours to modify!
+export function Button({ variant = "primary", ...props }) {
   return (
-    <Button variant="primary" size="lg">
-      Get Started
-    </Button>
+    <button
+      className={cn(
+        "custom-styles", // Change anything you want
+        variantStyles[variant]
+      )}
+      {...props}
+    />
   );
 }
 ```
 
-### Input Component
+
+## 🚦 Getting Started
+
+### For New Projects
+
+**Option 2: Use as Component Library**
+Add Page Kit components to your existing Next.js project:
+
+```bash
+npx page-kit init
+npx page-kit add @pagekit/button
+```
+
+### For Existing Projects
+
+1. **Ensure Compatibility**
+
+   - Next.js 13+ (App Router)
+   - React 18+
+   - Tailwind CSS 4
+
+2. **Initialize Page Kit**
+
+   ```bash
+   npx page-kit init
+   ```
+
+3. **Add Components**
+
+   ```bash
+   npx page-kit add @pagekit/[component-name]
+   ```
+
+4. **Import and Use**
+
+   ```tsx
+   import { Button } from "@/components/ui/button";
+
+   export default function Page() {
+     return <Button>Click me</Button>;
+   }
+   ```
+
+## ⚙️ Customization
+
+### Theme Variables
+
+Customize colors, fonts, and spacing via CSS variables:
+
+```css
+:root {
+  --color-primary: 220 100% 50%;
+  --color-secondary: 280 100% 60%;
+  --font-heading: "Inter", sans-serif;
+  --radius: 0.5rem;
+}
+```
+
+### Component Variants
+
+Extend components with new variants:
 
 ```tsx
-import { Input } from "@/components/core/input";
+// Add your custom variant
+const buttonVariants = {
+  primary: "bg-primary text-white",
+  secondary: "bg-secondary text-white",
+  custom: "bg-gradient-to-r from-pink-500 to-purple-500", // Your variant
+};
+```
 
-export default function MyForm() {
-  return <Input placeholder="Enter your email" type="email" />;
+### Animation Timing
+
+Fine-tune animations to match your brand:
+
+```tsx
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ duration: 0.3, ease: "easeOut" }} // Adjust timing
+>
+```
+
+## 🎯 Quick Start
+
+### Using Components Directly
+
+Browse components in `/docs` and copy the code:
+
+```tsx
+import { Button } from "@/registry/ui/button";
+
+export default function MyPage() {
+  return (
+    <div className="flex gap-4">
+      <Button variant="primary" size="lg">
+        Get Started
+      </Button>
+      <Button variant="secondary" size="lg">
+        Learn More
+      </Button>
+    </div>
+  );
+}
+```
+
+### Building a Landing Page
+
+Combine block components for instant results:
+
+```tsx
+import HeroSection from "@/registry/blocks/hero-section";
+import FeatureGrid from "@/registry/blocks/feature-grid";
+import CallToAction from "@/registry/blocks/call-to-action";
+
+export default function LandingPage() {
+  return (
+    <>
+      <HeroSection />
+      <FeatureGrid />
+      <CallToAction />
+    </>
+  );
 }
 ```
 
 ## 📚 Documentation
 
-Visit the `/docs` route in your local development server to explore:
+Explore comprehensive documentation with interactive examples:
 
-- **Installation Guide** - Step-by-step setup instructions
-- **Component Library** - Interactive examples and usage guides
-- **Button Components** - Various button styles and variants
-- **Input Components** - Form input components with validation
-- **Code Examples** - Copy-paste ready code snippets
+- **[Installation Guide](/docs/installation)** - Detailed setup instructions
+- **[Components](/docs/components)** - Browse all available components
+- **[CLI Guide](/docs/cli-guide)** - Command-line tool documentation
 
-## 🗂️ Project Structure
 
-```
-src/
-├── app/
-│   ├── (landing)/          # Landing page components
-│   └── docs/               # Documentation pages
-├── components/
-│   ├── core/               # Core reusable components
-│   └── site/               # Site-specific components
-├── assets/
-│   ├── fonts/              # Custom fonts
-│   └── icons/              # Icon components
-├── lib/                    # Utility functions
-├── constants/              # App constants
-├── data/                   # Static data
-└── scripts/                # Build and utility scripts
-```
+### Documentation Features
+
+- 📖 **Live Previews** - See components in action
+- 💻 **Code Examples** - Copy-paste ready snippets
+- 🎨 **Variant Showcase** - Explore all component variations
+- 📊 **Props Tables** - Complete API reference
+- 🎯 **Usage Patterns** - Real-world implementation examples
+
 
 ## 🎨 Design Philosophy
 
-Page Kit follows these design principles:
+Page Kit is built on these core principles:
 
-- **Simplicity First** - Clean, minimal designs that focus on usability
-- **Accessibility** - Built with accessibility in mind using Radix UI primitives
-- **Performance** - Optimized for speed with modern React patterns
-- **Consistency** - Unified design system across all components
-- **Flexibility** - Easy to customize and extend for your needs
+### 🎯 Accessibility First
+
+- WCAG 2.1 AA compliant components
+- Keyboard navigation support
+- Screen reader friendly
+- Focus management and ARIA attributes
+
+### ⚡ Performance Optimized
+
+- Minimal bundle size with tree-shaking
+- Lazy loading for optimal loading times
+- Efficient animations with Motion
+- Server-side rendering ready
+
+### 🎨 Design System Thinking
+
+- Consistent spacing and typography
+- Unified color palette with semantic tokens
+- Reusable patterns and variants
+- Design tokens via CSS variables
+
+### 🔧 Developer Friendly
+
+- Intuitive component APIs
+- Comprehensive TypeScript types
+- Clear documentation and examples
+- Extensible and customizable
+
+## 🌟 Why Page Kit?
+
+### vs Building from Scratch
+
+- ⏱️ **Save 100+ hours** - Components are already built and tested
+- 🎨 **Professional design** - No need for design skills
+- ♿ **Accessibility included** - WCAG compliance out of the box
+- 🎬 **Smooth animations** - Motion integration ready to go
+
+### vs Other UI Libraries
+
+- 🎯 **You own the code** - Components live in your project, not node_modules
+- 🔧 **Full customization** - Modify anything without fighting the framework
+- 📦 **No vendor lock-in** - No runtime dependency on Page Kit
+- 🚀 **Modern stack** - Latest Next.js, React, and Tailwind
+
+### vs Template/Theme Marketplaces
+
+- 🆓 **100% Free & Open Source** - MIT licensed
+- 🔄 **Modular approach** - Use only what you need
+- 📚 **Learn as you build** - Understand how components work
+- 🤝 **Community driven** - Contribute and improve together
 
 ## 🤝 Contributing
 
-We welcome contributions from the community! Here's how you can help:
+We welcome contributions! Page Kit is community-driven and your input helps make it better.
 
-1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/amazing-feature`
-3. **Make your changes** and add tests if applicable
-4. **Commit your changes**: `git commit -m 'Add amazing feature'`
-5. **Push to the branch**: `git push origin feature/amazing-feature`
-6. **Open a Pull Request**
+**Ways to contribute:**
 
-Please read our [Contributing Guide](CONTRIBUTING.md) for more details.
+- 🐛 Report bugs and issues
+- 💡 Suggest new components or features
+- 📖 Improve documentation
+- 🎨 Submit component designs
+- 💻 Add new components to the registry
+
+See our [Contributing Guide](CONTRIBUTING.md) for detailed guidelines on adding components, code standards, and the submission process.
+
+## � Support & Community
+
+### Get Help
+
+- 📖 **[Documentation](/docs)** - Comprehensive guides and examples
+- 🐛 **[Report Issues](https://github.com/imzahidhasan/page-kit/issues)** - Bug reports and feature requests
+- 💬 **[Discussions](https://github.com/imzahidhasan/page-kit/discussions)** - Questions, ideas, and community chat
+
+### Stay Updated
+
+- ⭐ **Star this repo** to get notified of new releases
+- 👀 **Watch releases** for component updates and new features
+- 🐦 **Follow on Twitter** for tips and announcements
+
+
+## 🏆 Showcase
+
+Built something awesome with Page Kit? We'd love to feature it! Share your project in [Discussions](https://github.com/imzahidhasan/page-kit/discussions) or tag us on social media.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Page Kit is open source software licensed under the [MIT License](LICENSE).
+
+**What this means:**
+
+- ✅ Free for personal and commercial use
+- ✅ Modify and distribute as you wish
+- ✅ Private use allowed
+- ✅ No attribution required (but appreciated!)
 
 ## 🌟 Acknowledgments
 
-- Built with [Next.js](https://nextjs.org/)
-- Styled with [Tailwind CSS](https://tailwindcss.com/)
-- Animated with [Motion](https://motion.dev/)
-- Icons by [Lucide](https://lucide.dev/)
-- UI primitives by [Radix UI](https://www.radix-ui.com/)
+Page Kit is built with amazing open-source tools:
 
-## 📞 Support
+- **[Next.js](https://nextjs.org/)** - The React Framework
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS
+- **[Motion](https://motion.dev/)** - Production-ready animations
+- **[Radix UI](https://www.radix-ui.com/)** - Unstyled, accessible components
+- **[Lucide](https://lucide.dev/)** - Beautiful icon library
+- **[MDX](https://mdxjs.com/)** - Markdown for components
 
-If you have any questions or need help:
-
-- 📖 Check the [Documentation](/docs)
-- 🐛 [Report Issues](https://github.com/imzahidhasan/page-kit/issues)
-- 💬 [Start Discussions](https://github.com/imzahidhasan/page-kit/discussions)
+Special thanks to all contributors who help make Page Kit better! 🙏
 
 ---
 
 <div align="center">
-  Made with ❤️ by <a href="https://github.com/imzahidhasan">Zahid Hasan</a>
-  
   ⭐ Star this repo if you find it helpful!
 </div>
