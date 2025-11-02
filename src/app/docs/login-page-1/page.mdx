@@ -1,0 +1,237 @@
+import { ComponentRenderer } from "@/components/site/component-renderer";
+import { CodeBlock } from "@/components/site/code-block";
+import { Cli } from "@/components/site/cli";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/site/tabs";
+import Preview from "./_components/preview";
+
+# Login Page 1
+
+A modern, responsive login page featuring glassmorphism effects, smooth Motion animations, and full dark mode compatibility.
+
+## Installation
+
+<Cli command=" add @pagekit/login-page-1" />
+
+## Usage
+
+### Preview
+
+A beautiful glassmorphism login page with animated background blobs and password visibility toggle.
+
+<Tabs defaultValue="preview">
+  <TabsList>
+    <TabsTrigger value="preview">Preview</TabsTrigger>
+    <TabsTrigger value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ComponentRenderer component={<Preview />} />
+  </TabsContent>
+  <TabsContent value="code">
+    <CodeBlock filePath="src/registry/blocks/login-page-1/login-page-1.tsx" />
+  </TabsContent>
+</Tabs>
+
+## Features
+
+- ✅ Glassmorphism card design with backdrop blur
+- ✅ Animated floating background blobs
+- ✅ Full dark mode support
+- ✅ Password visibility toggle with Lucide icons
+- ✅ Smooth Motion animations
+- ✅ Fully responsive layout
+- ✅ Accessible with ARIA labels
+- ✅ TypeScript support
+- ✅ Form validation ready
+
+## Component Structure
+
+The login page consists of several key components:
+
+### Background Animation
+
+Three animated blobs create a dynamic background effect using Motion:
+
+<CodeBlock
+  code={`<motion.div
+  className="absolute top-20 left-20 w-72 h-72 bg-emerald-400 dark:bg-emerald-600 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-20 dark:opacity-10"
+  animate={{
+    x: [0, 30, 0],
+    y: [0, 50, 0],
+    scale: [1, 1.1, 1],
+  }}
+  transition={{
+    duration: 7,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+/>`}
+  lang="tsx"
+/>
+
+### Glass Card Container
+
+The card uses backdrop-filter for the glassmorphism effect:
+
+<CodeBlock
+  code={`<motion.div
+  className="relative w-full max-w-md backdrop-blur-lg bg-white/30 dark:bg-gray-800/30 border border-white/20 dark:border-gray-700/30 shadow-2xl"
+  style={{
+    backdropFilter: "blur(16px) saturate(180%)",
+    borderRadius: "16px",
+  }}
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5, ease: "easeOut" }}
+>
+  {/* Card content */}
+</motion.div>`}
+  lang="tsx"
+/>
+
+### Password Toggle
+
+Interactive password visibility toggle using Lucide icons:
+
+<CodeBlock code={`const [showPassword, setShowPassword] = useState(false);
+
+<div className="relative">
+  <input
+    type={showPassword ? "text" : "password"}
+    id="password"
+    className="w-full px-4 py-3 pr-12 bg-white/50 dark:bg-gray-700/50..."
+    placeholder="••••••••"
+    required
+  />
+  <button
+    type="button"
+    onClick={() => setShowPassword(!showPassword)}
+    className="absolute right-3 top-1/2 -translate-y-1/2..."
+    aria-label={showPassword ? "Hide password" : "Show password"}
+  >
+    {showPassword ? (
+      <EyeOff className="w-5 h-5" />
+    ) : (
+      <Eye className="w-5 h-5" />
+    )}
+  </button>
+</div>
+`} lang="tsx" />
+
+## Customization
+
+### Color Theme
+
+Update the gradient colors to match your brand:
+
+<CodeBlock code={`// Background gradient
+className="bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+
+// Heading gradient
+className="bg-gradient-to-r from-emerald-600 to-teal-600 dark:from-emerald-400 dark:to-teal-400"
+
+// Button gradient
+className="bg-gradient-to-r from-emerald-600 to-teal-600"
+
+// Animated blobs colors
+className="bg-emerald-400 dark:bg-emerald-600" // First blob
+className="bg-teal-400 dark:bg-teal-600" // Second blob
+className="bg-cyan-400 dark:bg-cyan-600" // Third blob`} lang="tsx" />
+
+### Glassmorphism Effect
+
+Adjust the glass card opacity and blur intensity:
+
+<CodeBlock
+  code={`<motion.div
+  className="bg-white/30 dark:bg-gray-800/30" // Change opacity (30 = 30%)
+  style={{
+    backdropFilter: "blur(16px) saturate(180%)", // Adjust blur
+  }}
+>`}
+  lang="tsx"
+/>
+
+### Animation Parameters
+
+Customize the blob animation behavior:
+
+<CodeBlock
+  code={`<motion.div
+  animate={{
+    x: [0, 30, 0],      // Horizontal movement range
+    y: [0, 50, 0],      // Vertical movement range
+    scale: [1, 1.1, 1], // Scale animation range
+  }}
+  transition={{
+    duration: 7,        // Animation duration in seconds
+    repeat: Infinity,   // Loop forever
+    ease: "easeInOut",  // Easing function
+    delay: 0,           // Delay before animation starts
+  }}
+/>`}
+  lang="tsx"
+/>
+
+### Form Handling
+
+Add form submission logic:
+
+<CodeBlock code={`const LoginPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
+    
+    // Add your authentication logic here
+    try {
+      await signIn(email, password);
+    } catch (error) {
+      console.error('Login failed:', error);
+    }
+  };
+
+return (
+// ... rest of component
+
+<form onSubmit={handleSubmit} className="space-y-5">
+  <input type="email" name="email" />
+  <input type="password" name="password" />
+  <button type="submit">Sign In</button>
+</form>
+); };`} lang="tsx" />
+
+## Dark Mode
+
+The component automatically adapts to the user's system theme preference using Tailwind's dark mode classes.
+
+### Manual Theme Toggle
+
+To add a manual theme switcher:
+
+<CodeBlock code={`// Using next-themes
+import { useTheme } from "next-themes"
+
+function ThemeToggle() {
+const { theme, setTheme } = useTheme()
+
+return (
+
+<button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+  Toggle theme
+</button>
+) }`} lang="tsx" />
+
+## Dependencies
+
+- **motion** - Animation library for smooth transitions
+- **lucide-react** - Icon library for Eye/EyeOff icons
+- **clsx** - Utility for conditional classNames
+- **tailwind-merge** - Merge Tailwind classes without conflicts

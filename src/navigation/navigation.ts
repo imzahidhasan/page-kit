@@ -22,6 +22,12 @@ export const navigation: NavigationItem[] = [
     children: [
       { label: "Button", href: "/docs/button" },
     ]
+  },
+  {
+    label: "Login & Signup",
+    children: [
+      { label: "Login Page 1", href: "/docs/login-page-1" },
+    ]
   }
   
 ];
