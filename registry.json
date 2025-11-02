@@ -6,6 +6,7 @@
     {
       "name": "button",
       "type": "registry:ui",
+      "author": "MD ZAHID HASAN (https://zahid-hasan.vercel.app)",
       "title": "a unique button",
       "description": "A customizable button component with various styles and sizes.",
       "registryDependencies": [],
@@ -13,6 +14,21 @@
         {
           "path": "src/registry/ui/button.tsx",
           "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "login-page-1",
+      "type": "registry:block",
+      "title": "Login Page 1",
+      "author": "MD ZAHID HASAN (https://zahid-hasan.vercel.app)",
+      "description": "A responsive login page component with animations and form validation.",
+      "registryDependencies": [],
+      "dependencies": ["motion","lucide-react","tailwind-merge","clsx"],
+      "files": [
+        {
+          "path": "src/registry/blocks/login-page-1/login-page-1.tsx",
+          "type": "registry:block"
         }
       ]
     }

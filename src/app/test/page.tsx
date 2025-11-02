@@ -1,4 +1,4 @@
-import LoginPage from '@/registry/blocks/login-and-signup-1/page'
+import LoginPage from '@/registry/blocks/login-page-1/login-page-1'
 import React from 'react'
 
 const page = () => {
