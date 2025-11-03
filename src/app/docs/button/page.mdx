@@ -1,4 +1,4 @@
-import { ComponentRenderer } from "@/components/site/component-renderer";
+import { ComponentRender } from "@/components/site/component-render";
 import { CodeBlock } from "@/components/site/code-block";
 import { PropsTable } from "@/components/site/props-table";
 import { Cli } from "@/components/site/cli";
@@ -37,7 +37,7 @@ The default button style with primary colors.
     <TabsTrigger value="code">Code</TabsTrigger>
   </TabsList>
   <TabsContent value="preview">
-    <ComponentRenderer component={<ButtonDefault />} />
+    <ComponentRender component={<ButtonDefault />} />
   </TabsContent>
   <TabsContent value="code">
     <CodeBlock filePath="src/app/docs/button/_components/button-default.tsx" />
@@ -54,7 +54,7 @@ The button component comes with multiple style variants to suit different use ca
     <TabsTrigger value="code">Code</TabsTrigger>
   </TabsList>
   <TabsContent value="preview">
-    <ComponentRenderer component={<ButtonVariants />} />
+    <ComponentRender component={<ButtonVariants />} />
   </TabsContent>
   <TabsContent value="code">
     <CodeBlock filePath="src/app/docs/button/_components/button-variants.tsx" />
@@ -80,7 +80,7 @@ Three different size options are available.
     <TabsTrigger value="code">Code</TabsTrigger>
   </TabsList>
   <TabsContent value="preview">
-    <ComponentRenderer component={<ButtonSizes />} />
+    <ComponentRender component={<ButtonSizes />} />
   </TabsContent>
   <TabsContent value="code">
     <CodeBlock filePath="src/app/docs/button/_components/button-sizes.tsx" />
@@ -104,7 +104,7 @@ Buttons can include icons alongside text. Icons are automatically sized and posi
     <TabsTrigger value="code">Code</TabsTrigger>
   </TabsList>
   <TabsContent value="preview">
-    <ComponentRenderer component={<ButtonWithIcon />} />
+    <ComponentRender component={<ButtonWithIcon />} />
   </TabsContent>
   <TabsContent value="code">
     <CodeBlock filePath="src/app/docs/button/_components/button-with-icon.tsx" />
@@ -121,7 +121,7 @@ Use the `icon` size variant for buttons that only contain an icon.
     <TabsTrigger value="code">Code</TabsTrigger>
   </TabsList>
   <TabsContent value="preview">
-    <ComponentRenderer component={<ButtonIcon />} />
+    <ComponentRender component={<ButtonIcon />} />
   </TabsContent>
   <TabsContent value="code">
     <CodeBlock filePath="src/app/docs/button/_components/button-icon.tsx" />
@@ -138,7 +138,7 @@ Buttons can be disabled to prevent user interaction.
     <TabsTrigger value="code">Code</TabsTrigger>
   </TabsList>
   <TabsContent value="preview">
-    <ComponentRenderer component={<ButtonDisabled />} />
+    <ComponentRender component={<ButtonDisabled />} />
   </TabsContent>
   <TabsContent value="code">
     <CodeBlock filePath="src/app/docs/button/_components/button-disabled.tsx" />
@@ -155,7 +155,7 @@ Use the `asChild` prop to render the button as a different element (like a Link)
     <TabsTrigger value="code">Code</TabsTrigger>
   </TabsList>
   <TabsContent value="preview">
-    <ComponentRenderer component={<ButtonAsChild />} />
+    <ComponentRender component={<ButtonAsChild />} />
   </TabsContent>
   <TabsContent value="code">
     <CodeBlock filePath="src/app/docs/button/_components/button-as-child.tsx" />
@@ -257,7 +257,7 @@ You can customize the button by passing a `className` prop or by modifying the `
     <TabsTrigger value="code">Code</TabsTrigger>
   </TabsList>
   <TabsContent value="preview">
-    <ComponentRenderer component={<CustomLink />} />
+    <ComponentRender component={<CustomLink />} />
   </TabsContent>
   <TabsContent value="code">
     <CodeBlock filePath="src/app/docs/button/_components/custom-link.tsx" />

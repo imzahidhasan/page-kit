@@ -1,4 +1,4 @@
-import { ComponentRenderer } from "@/components/site/component-renderer";
+import { ComponentRenderer } from "@/components/site/component-render";
 import { CodeBlock } from "@/components/site/code-block";
 import { Cli } from "@/components/site/cli";
 import {
@@ -8,6 +8,7 @@ import {
   TabsContent,
 } from "@/components/site/tabs";
 import Preview from "./_components/preview";
+import PageRender from "@/components/site/page-render";
 
 # Login Page 1
 
@@ -29,7 +30,9 @@ A beautiful glassmorphism login page with animated background blobs and password
     <TabsTrigger value="code">Code</TabsTrigger>
   </TabsList>
   <TabsContent value="preview">
-    <ComponentRenderer component={<Preview />} />
+    <PageRender>
+      <Preview />
+    </PageRender>
   </TabsContent>
   <TabsContent value="code">
     <CodeBlock filePath="src/registry/blocks/login-page-1/login-page-1.tsx" />
