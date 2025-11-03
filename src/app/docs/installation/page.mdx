@@ -7,6 +7,7 @@ import {
 import { NextjsIcon } from "@/assets/icons/nextjs";
 import { ViteIcon } from "@/assets/icons/vite";
 import { CodeBlock } from "@/components/site/code-block";
+import Terminal from "@/components/site/terminal";
 
 ## Installation
 
@@ -39,9 +40,9 @@ Follow the step-by-step guide below to get started with PageKit in your preferre
         <p className="text-sm text-muted-foreground mb-3">
           Run the following command to create a new Next.js project. The interactive CLI will guide you through the setup process.
         </p>
-
         <CodeBlock
           code={`npx create-next-app@latest your-project-name
+
 cd your-project-name`}
 lang="bash"
 />
@@ -62,8 +63,7 @@ lang="bash"
           ShadCN CLI will set up the necessary configuration files and folder structure for managing your components. This is a one-time setup process.
         </p>
 
-        <CodeBlock code="npx shadcn@latest init" lang="bash" />
-
+          <Terminal command="init" />
         <p className="text-sm text-muted-foreground mt-3">
           Follow the prompts to configure your project. The defaults work great for most projects.
         </p>
@@ -100,7 +100,9 @@ lang="json"
           Now you're ready to add PageKit components! Use the <code className="text-xs bg-muted px-1 py-0.5 rounded">@pagekit</code> prefix to add any component. For example, to add a button:
         </p>
 
-        <CodeBlock code="npx shadcn@latest add @pagekit/button" lang="bash" />
+{" "}
+
+<Terminal command="add @pagekit/button" />
 
         <p className="text-sm text-muted-foreground mt-3">
           The component will be automatically added to your <code className="text-xs bg-muted px-1 py-0.5 rounded">components/ui</code> folder, ready to use in your application. You can then import and use it like any other React component.
@@ -131,9 +133,11 @@ lang="json"
 
         <CodeBlock
           code={`npm create vite@latest my-project
+
 cd my-project`}
 lang="bash"
 />
+
 </div>
 
       <div>
@@ -175,7 +179,7 @@ export default defineConfig({
           Run the ShadCN initialization command. This sets up the necessary configuration and creates the component structure:
         </p>
 
-        <CodeBlock code="npx shadcn@latest init" lang="bash" />
+<Terminal command="init" />
 
         <p className="text-sm text-muted-foreground mt-3">
           When prompted, configure the path aliases and choose your preferred styling options. The CLI will guide you through the setup.
@@ -213,7 +217,7 @@ lang="json"
           You're now ready to add PageKit components! Install any component you need with a simple command:
         </p>
 
-        <CodeBlock code="npx shadcn@latest add @pagekit/button" lang="bash" />
+<Terminal command="add @pagekit/button" />
 
         <p className="text-sm text-muted-foreground mt-3">
           Components will be added to your <code className="text-xs bg-muted px-1 py-0.5 rounded">src/components/ui</code> folder and are ready to import and use in your React components.

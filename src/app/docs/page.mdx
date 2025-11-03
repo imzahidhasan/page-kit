@@ -1,4 +1,5 @@
 import { CodeBlock } from "@/components/site/code-block";
+import Terminal from "@/components/site/terminal";
 
 ## Introduction
 
@@ -22,15 +23,28 @@ Page Kit helps you build professional websites faster by providing ready-to-use,
 
 Get started in three simple steps:
 
-1. **Initialize your project**
+### 1. Initialize your project
 
-<CodeBlock code="npx shadcn@latest init" lang="bash" />
+<Terminal command="init" />
 
-2. **Add components using the CLI**
+### 2. Add PageKit registry to your configuration
 
-<CodeBlock code="npx shadcn@latest add @pagekit/button" lang="bash" />
+After initialization, you'll find a `components.json` file in your project root. Open it and add the PageKit registry to the `registries` section:
 
-3. **Use in your code**
+<CodeBlock
+  code={`{
+  "registries": {
+    "@pagekit": "https://page-kit.vercel.app/r/{name}.json"
+  }
+}`}
+  lang="json"
+/>
+
+### 3. Add components using the CLI
+
+<Terminal command="add @pagekit/button" />
+
+### 4. Use in your code
 
 <CodeBlock code={`import { Button } from "@/components/ui/button";
 
