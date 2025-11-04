@@ -31,6 +31,21 @@
           "type": "registry:block"
         }
       ]
+    },
+    {
+      "name": "login-page-2",
+      "type": "registry:block",
+      "title": "Login Page 2",
+      "author": "MD ZAHID HASAN (https://zahid-hasan.vercel.app)",
+      "description": "A modern login page component with social media login options and responsive design.",
+      "registryDependencies": [],
+      "dependencies": ["tailwind-merge","clsx"],
+      "files": [
+        {
+          "path": "src/registry/blocks/login-page-2/login-page-2.tsx",
+          "type": "registry:block"
+        }
+      ]
     }
   ]
 }

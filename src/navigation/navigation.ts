@@ -27,6 +27,7 @@ export const navigation: NavigationItem[] = [
     label: "Login & Signup",
     children: [
       { label: "Login Page 1", href: "/docs/login-page-1" },
+      { label: "Login Page 2", href: "/docs/login-page-2" },
     ]
   }
   
