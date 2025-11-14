@@ -11,7 +11,7 @@ const PageRender = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <div className="border border-gray-500 rounded-lg overflow-hidden min-h-[400px] w-full relative">
+      <div className="border border-gray-500 rounded-lg overflow-hidden min-h-[400px]  w-full relative">
         {/* Full Page Toggle Button */}
         <button
           onClick={toggleFullPage}

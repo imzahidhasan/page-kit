@@ -301,6 +301,12 @@ const Header = () => {
               >
                 Documentation
               </Link>
+              <Link
+                className="hover:text-zinc-900 dark:hover:text-zinc-50"
+                href="/blocks"
+              >
+                Blocks
+              </Link>
             </nav>
           </div>
 
