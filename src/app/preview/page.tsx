@@ -3,8 +3,8 @@ import React from "react";
 
 function page() {
   return (
-    <div>
-    <p>this is a preview page</p>
+    <div className="">
+      <LoginPage />
     </div>
   );
 }
